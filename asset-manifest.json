@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/daily-status-board-react/static/css/main.d1b05096.chunk.css",
+    "main.js": "/daily-status-board-react/static/js/main.4ab33db5.chunk.js",
+    "main.js.map": "/daily-status-board-react/static/js/main.4ab33db5.chunk.js.map",
+    "runtime-main.js": "/daily-status-board-react/static/js/runtime-main.142afc9d.js",
+    "runtime-main.js.map": "/daily-status-board-react/static/js/runtime-main.142afc9d.js.map",
+    "static/js/2.c079d0c3.chunk.js": "/daily-status-board-react/static/js/2.c079d0c3.chunk.js",
+    "static/js/2.c079d0c3.chunk.js.map": "/daily-status-board-react/static/js/2.c079d0c3.chunk.js.map",
+    "index.html": "/daily-status-board-react/index.html",
+    "precache-manifest.5f0171a09f1485b76c2e820d5ced7615.js": "/daily-status-board-react/precache-manifest.5f0171a09f1485b76c2e820d5ced7615.js",
+    "service-worker.js": "/daily-status-board-react/service-worker.js",
+    "static/css/main.d1b05096.chunk.css.map": "/daily-status-board-react/static/css/main.d1b05096.chunk.css.map",
+    "static/js/2.c079d0c3.chunk.js.LICENSE": "/daily-status-board-react/static/js/2.c079d0c3.chunk.js.LICENSE",
+    "static/media/logo.svg": "/daily-status-board-react/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.142afc9d.js",
+    "static/js/2.c079d0c3.chunk.js",
+    "static/css/main.d1b05096.chunk.css",
+    "static/js/main.4ab33db5.chunk.js"
+  ]
+}
