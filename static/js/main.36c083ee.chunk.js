@@ -1,0 +1,2 @@
+(this["webpackJsonpdaily-status-board-react"]=this["webpackJsonpdaily-status-board-react"]||[]).push([[0],[,,,function(e,t,a){e.exports=a(10)},,,,,function(e,t,a){},function(e,t,a){},function(e,t,a){"use strict";a.r(t);var n=a(0),r=a.n(n),c=a(2),s=a.n(c);a(8),a(9);var l=function(){return r.a.createElement("div",{className:"App"},r.a.createElement("header",{className:"App-header"},r.a.createElement("p",null,"Hej hej")))};s.a.render(r.a.createElement(l,null),document.getElementById("root"))}],[[3,1,2]]]);
+//# sourceMappingURL=main.36c083ee.chunk.js.map
