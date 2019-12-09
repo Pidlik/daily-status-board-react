@@ -1,3 +1,5 @@
+[GitHub Pages](https://pidlik.github.io/daily-status-board-react/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
