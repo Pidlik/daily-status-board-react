@@ -21,6 +21,40 @@ https://blog.logrocket.com/how-to-use-react-createref-ea014ad09dba/
 
 */
 
+/*
+For ChartController maybe?
+https://reactpatterns.com/
+
+handleEvent({type}) {
+  switch(type) {
+    case "click":
+    case "mouseenter":
+      return this.setState({ hovered: true })
+    case "mouseleave":
+      return this.setState({ hovered: false })
+    default:
+      return console.warn(`No case for event type "${type}"`)
+  }
+}
+
+class ControlledNameInput extends React.Component {
+  constructor() {
+    super();
+    this.state = { name: "" };
+  }
+
+  render() {
+    return (
+      <input
+        value={this.state.name}
+        onChange={e => this.setState({ name: e.target.value })}
+      />
+    );
+  }
+}
+
+*/
+
 var chartData = {
   labels: [],
   datasets: [{
