@@ -1,5 +1,9 @@
 import React from 'react';
 
+import '../chart/chart.css'
+
+import InputHandler from '../input_handler/input_handler'
+
 class ChartHandler extends React.Component {
   constructor(props) {
     super(props);
@@ -11,20 +15,9 @@ class ChartHandler extends React.Component {
         <div id="chart-container">
           {this.props.children}
         </div>
-        
+
         <div id="chart-controls">
-          <div id="input-container">
-            <div id="plus-container">
-              <input type="number" id="plusInput" value="0"/>
-              <button id="plusButton">+</button>
-            </div>
-          <div id="minus-container">
-            <input type="number" id="minusInput" value="0"/>
-            <button id="minusButton">-</button>
-          </div>
-        </div>
-          <button id="submitData">Submit</button>
-          <button id="addPostit">Add Postit</button>
+          <InputHandler/>
         </div>
       </React.Fragment>
     );
