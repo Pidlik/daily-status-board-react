@@ -2,9 +2,11 @@ import React from 'react';
 import Chart from 'chart.js';
 
 import './chart.css'
-import './chart_controls.css'
 
 /*
+
+Deploy to GitHub Pages:
+https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f
 
 Chart JS:
 https://www.chartjs.org/
@@ -19,31 +21,18 @@ https://blog.logrocket.com/how-to-use-react-createref-ea014ad09dba/
 
 */
 
-// TODO: Needed? Just input the rgb string directly in the chartData?
-window.chartColors = {
-  red: 'rgb(220, 20, 60)',
-  redOp: 'rgb(220, 20, 60, 0.6)',
-  orange: 'rgb(255, 159, 64)',
-  yellow: 'rgb(255, 205, 86)',
-  green: 'rgb(34, 175, 34)',
-  greenOp: 'rgb(34, 175, 34, 0.6)',
-  blue: 'rgb(54, 162, 235)',
-  purple: 'rgb(153, 102, 255)',
-  grey: 'rgb(231,233,237)'
-};
-
 var chartData = {
   labels: [],
   datasets: [{
     label: 'Plus',
-    backgroundColor: window.chartColors.greenOp,
-    borderColor: window.chartColors.green,
+    backgroundColor: 'rgb(34, 175, 34, 0.6)', // Green, opacity
+    borderColor: 'rgb(34, 175, 34)', // Green
     borderWidth: 1,
     data: []
   }, {
     label: 'Minus',
-    backgroundColor: window.chartColors.redOp,
-    borderColor: window.chartColors.red,
+    backgroundColor: 'rgb(220, 20, 60, 0.6)', // Red, opacity
+    borderColor: 'rgb(220, 20, 60)', // Red
     borderWidth: 1,
     data: []
   }]
@@ -51,7 +40,7 @@ var chartData = {
 
 let chartOptions = {
   responsive: true,
-  // maintainAspectRatio: false,
+  maintainAspectRatio: false,
   legend: {
     display: false,
   },
@@ -127,33 +116,5 @@ class BarChart extends React.Component {
     );
   }
 } // BarChart
-
-// function Chart() {
-//   return (
-//     <div id="left-container">
-//       <div id="chart-container">
-//         <BarChart
-//           data={chartData}
-//           title="My amazing data"
-//           color="#70CAD1"
-//         />
-//       </div>
-//       <div id="chart-controls">
-//         <div id="input-container">
-//           <div id="plus-container">
-//             <input type="number" id="plusInput" value="0"/>
-//             <button id="plusButton">+</button>
-//           </div>
-//         <div id="minus-container">
-//           <input type="number" id="minusInput" value="0"/>
-//           <button id="minusButton">-</button>
-//         </div>
-//       </div>
-//         <button id="submitData">Submit</button>
-//         <button id="addPostit">Add Postit</button>
-//       </div>
-//     </div>
-//   );
-// }
 
 export default BarChart;

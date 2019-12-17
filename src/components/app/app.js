@@ -3,16 +3,6 @@ import './app.css';
 
 import BarChart from '../chart/chart';
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//       <p>Hej hej</p>
-//       </header>
-//     </div>
-//   );
-// }
-
 // Data generation
 function getRandomArray(numItems) {
   // Create random array of objects
@@ -86,13 +76,36 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <BarChart
-          data={this.state.data[1].data}
-          title={this.state.data[1].title}
-          color="#70CAD1"
-        />
-      </div>
+      <>
+        <div id="left-container">
+          <div id="chart-container">
+            <BarChart
+              data={this.state.data[1].data}
+              title={this.state.data[1].title}
+              color="#70CAD1"
+            />
+          </div>
+          <div id="chart-controls">
+            <div id="input-container">
+              <div id="plus-container">
+                <input type="number" id="plusInput" value="0"/>
+                <button id="plusButton">+</button>
+              </div>
+            <div id="minus-container">
+              <input type="number" id="minusInput" value="0"/>
+              <button id="minusButton">-</button>
+            </div>
+          </div>
+            <button id="submitData">Submit</button>
+            <button id="addPostit">Add Postit</button>
+          </div>
+        </div>
+
+        <div id="right-container">
+          <div id="postit-container" ondrop="drop(event)" ondragover="drag_over(event)"></div>
+          <div dragable="false" id="trashcan-container" ondragenter="drag_enter(event)" ondragleave="drag_leave(event)" ondrop="drop_trashcan(event)" ondragover="drag_over(event)"></div>
+        </div>
+      </>
     );
   }
 }
