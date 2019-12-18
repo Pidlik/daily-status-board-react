@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './index.css';
-
-import ChartHandler from './components/chart_handler/chart_handler';
+import ChartHandler from './components/ChartHandler';
 // import PostItHandler from './components/post_it_handler/post_it_handler';
 
 /*

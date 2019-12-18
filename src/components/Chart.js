@@ -1,8 +1,6 @@
 import React from 'react';
 import Chart from 'chart.js';
 
-import './chart.css'
-
 /*
 
 Deploy to GitHub Pages:

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './input.css'
+import './InputHandler.css'
 
 class ControlledNumberInput extends React.Component {
   constructor(props) {

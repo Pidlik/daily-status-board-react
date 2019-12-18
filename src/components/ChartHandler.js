@@ -1,10 +1,9 @@
 import React from 'react';
 
-import './chart_handler.css';
-import '../chart/chart.css'
+import './ChartHandler.css';
 
-import BarChart from '../chart/chart';
-import InputHandler from '../input_handler/input_handler'
+import BarChart from './Chart';
+import InputHandler from './InputHandler'
 
 // Data generation
 function getRandomArray(numItems) {
