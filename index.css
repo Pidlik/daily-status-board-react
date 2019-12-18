@@ -17,7 +17,7 @@ html, body {
     font-family: 'Fira Sans', sans-serif;
 }
 
-#main-container {
+.main-container {
     display: flex;
     flex-flow: row;
     width: 100%;
@@ -25,14 +25,14 @@ html, body {
     padding: 0.4%;
 }
 
-#left-container {
+.left-container {
   display: flex;
   flex-flow: column;
   width: 60%;
   height: 100%;
 }
 
-#right-container {
+.right-container {
   display: flex;
   flex-flow: column;
   width: 40%;
@@ -42,7 +42,7 @@ html, body {
 /* ############################################### */
 /*     TODO: Move below to PostItHandler css       */
 /* ############################################### */
-#trashcan-container {
+.trashcan-container {
   width: 15%;
   height: 10%;
 
@@ -53,16 +53,16 @@ html, body {
   justify-content: center;
 }
 
-#trashcan-container * {
+.trashcan-container * {
   pointer-events: none;
 }
 
-#trashcan-image {
+.trashcan-image {
   object-fit: contain;
   max-height: 100%;
 }
 
-#helpButton {
+.helpButton {
   position: absolute;
   width: 60px;
   height: 40px;

@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/daily-status-board-react/static/css/main.7e4baf45.chunk.css",
-    "main.js": "/daily-status-board-react/static/js/main.c24716a1.chunk.js",
-    "main.js.map": "/daily-status-board-react/static/js/main.c24716a1.chunk.js.map",
+    "main.css": "/daily-status-board-react/static/css/main.841b2ef0.chunk.css",
+    "main.js": "/daily-status-board-react/static/js/main.44322c64.chunk.js",
+    "main.js.map": "/daily-status-board-react/static/js/main.44322c64.chunk.js.map",
     "runtime-main.js": "/daily-status-board-react/static/js/runtime-main.142afc9d.js",
     "runtime-main.js.map": "/daily-status-board-react/static/js/runtime-main.142afc9d.js.map",
     "static/js/2.a7bf7c11.chunk.js": "/daily-status-board-react/static/js/2.a7bf7c11.chunk.js",
     "static/js/2.a7bf7c11.chunk.js.map": "/daily-status-board-react/static/js/2.a7bf7c11.chunk.js.map",
     "index.html": "/daily-status-board-react/index.html",
-    "precache-manifest.74d96b7d5dc4f84bd17b2118814b7b6e.js": "/daily-status-board-react/precache-manifest.74d96b7d5dc4f84bd17b2118814b7b6e.js",
+    "precache-manifest.adedc46cb35c29d1044a297d9d004ff4.js": "/daily-status-board-react/precache-manifest.adedc46cb35c29d1044a297d9d004ff4.js",
     "service-worker.js": "/daily-status-board-react/service-worker.js",
-    "static/css/main.7e4baf45.chunk.css.map": "/daily-status-board-react/static/css/main.7e4baf45.chunk.css.map",
+    "static/css/main.841b2ef0.chunk.css.map": "/daily-status-board-react/static/css/main.841b2ef0.chunk.css.map",
     "static/js/2.a7bf7c11.chunk.js.LICENSE": "/daily-status-board-react/static/js/2.a7bf7c11.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.142afc9d.js",
     "static/js/2.a7bf7c11.chunk.js",
-    "static/css/main.7e4baf45.chunk.css",
-    "static/js/main.c24716a1.chunk.js"
+    "static/css/main.841b2ef0.chunk.css",
+    "static/js/main.44322c64.chunk.js"
   ]
 }
