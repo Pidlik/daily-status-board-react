@@ -28,6 +28,12 @@ class ControlledNumberInput extends React.Component {
   }
 }
 
+function SubmitButton(props) {
+  return(
+    <button className="submitData">Submit</button>
+  );
+}
+
 class ChartControls extends React.Component {
   constructor() {
     super();
@@ -51,8 +57,8 @@ class ChartControls extends React.Component {
             buttonText="-"
           />
         </div>
-        <button className="submitData">Submit</button>
-        <button className="addPostit">Add Postit</button>
+        <SubmitButton />
+        {/*<button className="addPostit">Add Postit</button>*/}
       </div>
     );
   }
