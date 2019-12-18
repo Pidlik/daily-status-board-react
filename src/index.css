@@ -24,3 +24,50 @@ html, body {
     height: 100%;
     padding: 0.4%;
 }
+
+#left-container {
+  display: flex;
+  flex-flow: column;
+  width: 60%;
+  height: 100%;
+}
+
+#right-container {
+  display: flex;
+  flex-flow: column;
+  width: 40%;
+  height: 100%;
+}
+
+/* ############################################### */
+/*     TODO: Move below to PostItHandler css       */
+/* ############################################### */
+#trashcan-container {
+  width: 15%;
+  height: 10%;
+
+  position: relative;
+
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+#trashcan-container * {
+  pointer-events: none;
+}
+
+#trashcan-image {
+  object-fit: contain;
+  max-height: 100%;
+}
+
+#helpButton {
+  position: absolute;
+  width: 60px;
+  height: 40px;
+  padding: 10px;
+  right: 0;
+  font-size: 1rem;
+  z-index: 999;
+}
