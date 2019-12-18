@@ -7,14 +7,12 @@ import ChartHandler from './components/ChartHandler';
 /*
 https://reactjs.org/docs/thinking-in-react.html
 
-- ChartHandler
-  - Chart
-  - ChartInputHandler
-    - InputContainer (?)
-      - NumberInput
-      - NumberInput
-    - InputContainer (?)
-      - Button
+- ChartHandler: State=[{date, plus, minus}, ...]
+  - Chart: Props=[{date, plus, minus}, ...]
+  - ChartControls Props={update function}
+    - NumberInput: State={plus}
+    - NumberInput: State={minus}
+    - SubmitButton: State={date(?)}
 
 - PostItHandler
   - TBD

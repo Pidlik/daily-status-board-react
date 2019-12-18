@@ -13,7 +13,8 @@ function getRandomArray(numItems) {
   for(var i = 0; i < numItems; i++) {
     data.push({
       label: names[i],
-      value: Math.round(20 + 80 * Math.random())
+      plus: Math.round(20 + 80 * Math.random()),
+      minus: Math.round(20 + 80 * Math.random()) * -1
     });
   }
   return data;
@@ -36,25 +37,25 @@ function getRandomDateArray(numItems) {
 function getData() {
   let data = [];
 
-  data.push({
-    title: 'Visits',
-    data: getRandomDateArray(150)
-  });
+  // data.push({
+  //   title: 'Visits',
+  //   data: getRandomDateArray(150)
+  // });
 
   data.push({
     title: 'Categories',
     data: getRandomArray(20)
   });
 
-  data.push({
-    title: 'Categories',
-    data: getRandomArray(10)
-  });
+  // data.push({
+  //   title: 'Categories',
+  //   data: getRandomArray(10)
+  // });
 
-  data.push({
-    title: 'Data 4',
-    data: getRandomArray(6)
-  });
+  // data.push({
+  //   title: 'Data 4',
+  //   data: getRandomArray(6)
+  // });
 
   return data;
 }
@@ -82,7 +83,7 @@ class ChartHandler extends React.Component {
   render() {
     return(
       <React.Fragment>
-        <BarChart data={this.state.data[1].data} />
+        <BarChart data={this.state.data[0].data} />
         <ChartControls />
       </React.Fragment>
     );

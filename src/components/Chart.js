@@ -73,20 +73,13 @@ class BarChart extends React.Component {
       type: 'bar',
       options: chartOptions,
       data: chartData,
-      // {
-      //   labels: this.props.data.map(d => d.label),
-      //   datasets: [{
-      //     label: this.props.title,
-      //     data: this.props.data.map(d => d.value),
-      //     backgroundColor: this.props.color
-      //   }]
-      // }
     });
   }
 
   componentDidUpdate() {
     this.myChart.data.labels = this.props.data.map(d => d.label);
-    this.myChart.data.datasets[0].data = this.props.data.map(d => d.value);
+    this.myChart.data.datasets[0].data = this.props.data.map(d => d.plus);
+    this.myChart.data.datasets[1].data = this.props.data.map(d => d.minus);
     this.myChart.update();
   }
 
