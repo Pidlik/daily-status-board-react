@@ -1,9 +1,9 @@
-#chart-container{
+.chart-container{
   width: 100%;
   height: 85%;
 }
 
-#chart-controls{
+.chart-controls{
   width: 100%;
   height: 15%;
   display: flex;

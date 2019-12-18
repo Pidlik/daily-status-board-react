@@ -1,58 +1,6 @@
 import React from 'react';
 import Chart from 'chart.js';
 
-/*
-
-Deploy to GitHub Pages:
-https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f
-
-Chart JS:
-https://www.chartjs.org/
-https://www.chartjs.org/samples/latest/charts/bar/stacked.html
-
-Chart JS & React:
-https://www.createwithdata.com/react-chartjs-dashboard/
-
-React refs:
-https://reactjs.org/docs/forwarding-refs.html
-https://blog.logrocket.com/how-to-use-react-createref-ea014ad09dba/
-
-*/
-
-/*
-For ChartController maybe?
-https://reactpatterns.com/
-
-handleEvent({type}) {
-  switch(type) {
-    case "click":
-    case "mouseenter":
-      return this.setState({ hovered: true })
-    case "mouseleave":
-      return this.setState({ hovered: false })
-    default:
-      return console.warn(`No case for event type "${type}"`)
-  }
-}
-
-class ControlledNameInput extends React.Component {
-  constructor() {
-    super();
-    this.state = { name: "" };
-  }
-
-  render() {
-    return (
-      <input
-        value={this.state.name}
-        onChange={e => this.setState({ name: e.target.value })}
-      />
-    );
-  }
-}
-
-*/
-
 var chartData = {
   labels: [],
   datasets: [{
@@ -144,7 +92,9 @@ class BarChart extends React.Component {
 
   render() {
     return (
-      <canvas ref={this.canvasRef} />
+      <div className="chart-container">
+        <canvas ref={this.canvasRef} />
+      </div>
     );
   }
 } // BarChart

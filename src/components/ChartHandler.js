@@ -3,7 +3,7 @@ import React from 'react';
 import './ChartHandler.css';
 
 import BarChart from './Chart';
-import InputHandler from './InputHandler'
+import ChartControls from './ChartControls'
 
 // Data generation
 function getRandomArray(numItems) {
@@ -70,27 +70,20 @@ class ChartHandler extends React.Component {
   }
 
   componentDidMount() {
-    window.setInterval(() => {
-      this.setState({
-        data: getData()
-      })
-    }, 5000)
+    this.setState({ data: getData() });
+    
+    // window.setInterval(() => {
+    //   this.setState({
+    //     data: getData()
+    //   })
+    // }, 5000)
   }
 
   render() {
     return(
       <React.Fragment>
-        <div id="chart-container">
-          <BarChart
-            data={this.state.data[1].data}
-            title={this.state.data[1].title}
-            color="#70CAD1"
-          />
-        </div>
-
-        <div id="chart-controls">
-          <InputHandler/>
-        </div>
+        <BarChart data={this.state.data[1].data} />
+        <ChartControls />
       </React.Fragment>
     );
   }

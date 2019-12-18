@@ -24,14 +24,15 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Daily Status Board</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="main-container">
-      <div id="left-container"></div>
+    <div class="main-container">
+      <div id="chart-handler" class="left-container">
+      </div>
 
-      <div id="right-container">
+      <div class="right-container">
         <!-- <div id="postit-container" ondrop="drop(event)" ondragover="drag_over(event)"></div>
         <div dragable="false" id="trashcan-container" ondragenter="drag_enter(event)" ondragleave="drag_leave(event)"
           ondrop="drop_trashcan(event)" ondragover="drag_over(event)">

@@ -1,4 +1,4 @@
-#input-container{
+.input-container{
   width: 100%;
   height: 30%;
   display: flex;
@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-#plus-container{
+.plus-container{
   display: flex;
   flex-flow: row;
   flex-wrap: no-wrap;
@@ -15,18 +15,18 @@
   margin: 0 0.5%;
 }
 
-#plusInput{
+.plusInput{
   width: 50%;
   height: 100%;
 }
-#plusButton{
+.plusButton{
   background: rgb(34, 175, 34); /* Green */
   width: 50%;
   height: 100%;
   padding: 0;
 }
 
-#minus-container{
+.minus-container{
   display: flex;
   flex-flow: row;
   flex-wrap: no-wrap;
@@ -35,11 +35,11 @@
   margin: 0 0.5%;
 }
 
-#minusInput{
+.minusInput{
   width: 50%;
   height: 100%;
 }
-#minusButton{
+.minusButton{
   background: rgb(220, 20, 60); /* Red */
   width: 50%;
   height: 100%;
@@ -57,11 +57,7 @@ input {
   text-decoration: none;
   font-size: 2rem;
   font-weight: bold;
-  border: 0.1px solid #555555;
-}
-
-.width-5 {
-  max-width: 5%;
+  border: 0.1px solid .555555;
 }
 
 button {
@@ -77,11 +73,11 @@ button {
   cursor: pointer;
 }
 
-#submitData {
+.submitData {
   margin: 1%;
 }
 
-#addPostit {
+.addPostit {
   margin: 1%;
 }
 
@@ -89,10 +85,10 @@ button:hover{
   background: rgb(255, 140, 0); /* Dark Orange */
 }
 
-#plusButton:hover{
+.plusButton:hover{
   background: rgb(34, 130, 34);
 }
 
-#minusButton:hover {
+.minusButton:hover {
   background: rgb(175, 20, 60);
 }
