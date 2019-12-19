@@ -1,8 +1,7 @@
+import * as Constants from './constants'
 
-const DEBUG = true;
-
-export default function DEBUG_LOG(string) {
-  if(DEBUG == true) {
+export default function DEBUG(string) {
+  if(Constants.ENABLE_DEBUG == true) {
     console.log('[DEBUG] ' + string);
   }
 }
