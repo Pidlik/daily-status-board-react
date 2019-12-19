@@ -12,7 +12,7 @@ https://reactjs.org/docs/thinking-in-react.html
   - ChartControls State{plus, minus} Props={update function}
     - NumberInput: Props={plus}
     - NumberInput: Props={minus}
-    - SubmitButton: Props={onSubmit}
+    - SubmitButton: Props={onSubmit = update function}
 
 - PostItHandler
   - TBD

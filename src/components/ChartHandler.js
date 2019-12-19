@@ -74,8 +74,17 @@ class ChartHandler extends React.Component {
   }
 
   updateChart(plus, minus) {
-    console.log("sdfdsf");
-    this.setState({ dataArray: [...this.state.dataArray, {label: "df", plus: plus, minus: minus * -1}] })
+    let newData = {label: "df", plus: plus, minus: minus * -1};
+
+    if(this.state.dataArray.length >= 10) {
+      console.log('Dataset data is longer than MAX_DATA_LENGTH (' + 10 + '), removing first datapoint');
+      // Remove the label first
+      // this.myChart.shift();
+    }
+
+    this.setState({
+      dataArray: [...this.state.dataArray, newData]
+    });
   }
 
   componentDidMount() {

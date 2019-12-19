@@ -5,7 +5,6 @@ import './ChartControls.css'
 class ControlledNumberInput extends React.Component {
   constructor(props) {
     super(props);
-
     this.updateNumber = this.updateNumber.bind(this);
   }
 
