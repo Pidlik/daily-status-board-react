@@ -55,7 +55,7 @@ let chartOptions = {
       stacked: true,
       ticks: {
         fontSize: 25,
-        suggestedMin: 0,
+        suggestedMin: -5,
         suggestedMax: 8,
       }
     }]

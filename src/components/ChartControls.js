@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './ChartControls.css'
+import DEBUG_LOG from './trace.js'
 
 class ControlledNumberInput extends React.Component {
   constructor(props) {
@@ -14,15 +15,14 @@ class ControlledNumberInput extends React.Component {
 
   render() {
     return (
-      <div className={this.props.containerClass}>
-        <input
+      <div className="plus-minus-container">
+        <input className="plus-minus-input"
           type="number"
           value={this.props.number}
-          className={this.props.inputClass}
           readOnly
         />
         <button 
-          className={this.props.buttonClass}
+          className={"plus-minus-button" + " " + this.props.buttonClass}
           onClick={this.updateNumber}
         >
           {this.props.buttonText}
@@ -42,22 +42,40 @@ class ChartControls extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      plus: 0,
-      minus: 0,
+      nrPlus: 0,
+      nrMinus: 0,
     };
 
+    this.isValidInput = this.isValidInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updatePlus = this.updatePlus.bind(this);
     this.updateMinus = this.updateMinus.bind(this);
   }
 
   reset() {
-    this.setState({plus: 0, minus: 0});
+    this.setState({nrPlus: 0, nrMinus: 0});
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    this.props.onSubmit(this.state.plus, this.state.minus);
+  isValidInput(nrPlus, nrMinus) {
+    if(!nrPlus || !nrMinus) { // Javascript "truthy"
+      DEBUG_LOG('No valid input data, returning');
+      return false;
+    } else if(nrPlus == 0 && nrMinus == 0) {
+      DEBUG_LOG('No valid input data (nrPlus: 0, nrMinus: 0), returning');
+      return false;
+    } else if(nrPlus < 0 || nrMinus < 0) {
+      DEBUG_LOG('No valid input data (nrPlus < 0 or nrMinus < 0), returning');
+      return false;
+    }
+
+    return true;
+  }
+
+
+  handleSubmit() {
+    if(this.isValidInput(this.state.nrPlus, this.state.nrMinus)) {
+      this.props.onSubmit(this.state.nrPlus, this.state.nrMinus);
+    }
     this.reset();
   }
 
@@ -68,61 +86,31 @@ class ChartControls extends React.Component {
   // }
 
   updatePlus() {
-    this.setState({plus: this.state.plus + 1});
+    this.setState({nrPlus: this.state.nrPlus + 1});
   }
 
   updateMinus() {
-    this.setState({minus: this.state.minus + 1});
+    this.setState({nrMinus: this.state.nrMinus + 1});
   }
 
   render() {
     return (
       <div className="chart-controls">
         <div className="input-container">
-          {/*<form onSubmit={this.handleSubmit}>
-            <div className="plus-container">
-              <input
-                className="plusInput"
-                type="number"
-                name="plus"
-                value={this.state.plus}
-                onChange={this.handleChange}
-              />
-              <button className="plusButton">+</button>
-            </div>
-            <div className="minus-container">
-              <input
-                className="minusInput"
-                type="number"
-                name="minus"
-                value={this.state.minus}
-                onChange={this.handleChange}
-              />
-              <button className="minusButton">-</button>
-            </div>
-            <button type="submit" className="submitData">
-              Submit
-            </button>
-          </form> */}
           <ControlledNumberInput
-            containerClass="plus-container"
-            inputClass="plusInput"
             buttonClass="plusButton"
             buttonText="+"
-            number={this.state.plus}
+            number={this.state.nrPlus}
             updateNumber={this.updatePlus}
           />
           <ControlledNumberInput
-            containerClass="minus-container"
-            inputClass="minusInput"
             buttonClass="minusButton"
             buttonText="-"
-            number={this.state.minus}
+            number={this.state.nrMinus}
             updateNumber={this.updateMinus}
           />
         </div>
         <SubmitButton onClick={this.handleSubmit}/>
-        {/*<button className="addPostit">Add Postit</button>*/}
       </div>
     );
   }
