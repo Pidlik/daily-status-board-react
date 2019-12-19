@@ -35,7 +35,7 @@ class ControlledNumberInput extends React.Component {
 
 function SubmitButton(props) {
   return(
-    <button className="submitData">Submit</button>
+    <button className="submitData" onClick={props.onClick}>Submit</button>
   );
 }
 
@@ -62,11 +62,11 @@ class ChartControls extends React.Component {
     this.reset();
   }
 
-  handleChange = (event) => {
-    let name = event.target.name;
-    let value = event.target.value;
-    this.setState({[name]: value});
-  }
+  // handleChange = (event) => {
+  //   let name = event.target.name;
+  //   let value = event.target.value;
+  //   this.setState({[name]: value});
+  // }
 
   updatePlus() {
     this.setState({plus: this.state.plus + 1});
@@ -80,7 +80,7 @@ class ChartControls extends React.Component {
     return (
       <div className="chart-controls">
         <div className="input-container">
-          <form onSubmit={this.handleSubmit}>
+          {/*<form onSubmit={this.handleSubmit}>
             <div className="plus-container">
               <input
                 className="plusInput"
@@ -104,8 +104,8 @@ class ChartControls extends React.Component {
             <button type="submit" className="submitData">
               Submit
             </button>
-          </form>
-          {/*<ControlledNumberInput
+          </form> */}
+          <ControlledNumberInput
             containerClass="plus-container"
             inputClass="plusInput"
             buttonClass="plusButton"
@@ -120,9 +120,9 @@ class ChartControls extends React.Component {
             buttonText="-"
             number={this.state.minus}
             updateNumber={this.updateMinus}
-          />*/}
+          />
         </div>
-        {/*<SubmitButton onClick={this.updateChart}/>*/}
+        <SubmitButton onClick={this.handleSubmit}/>
         {/*<button className="addPostit">Add Postit</button>*/}
       </div>
     );

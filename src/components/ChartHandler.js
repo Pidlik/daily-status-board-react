@@ -67,7 +67,7 @@ class ChartHandler extends React.Component {
 
     this.state = {
       // data=[{label, plus, minus}, ...]
-      dataArray: getData()
+      dataArray: getRandomArray(10)//getData()
     };
 
     this.updateChart = this.updateChart.bind(this);
@@ -75,7 +75,7 @@ class ChartHandler extends React.Component {
 
   updateChart(plus, minus) {
     console.log("sdfdsf");
-    // this.setState({ dataArray: [...this.state.dataArray, {plus, minus}] })
+    this.setState({ dataArray: [...this.state.dataArray, {label: "df", plus: plus, minus: minus * -1}] })
   }
 
   componentDidMount() {
@@ -91,7 +91,7 @@ class ChartHandler extends React.Component {
   render() {
     return(
       <React.Fragment>
-        <BarChart data={this.state.dataArray[0].data} />
+        <BarChart data={this.state.dataArray} />
         <ChartControls onSubmit={this.updateChart} />
       </React.Fragment>
     );
