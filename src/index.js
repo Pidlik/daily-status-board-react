@@ -9,7 +9,7 @@ https://reactjs.org/docs/thinking-in-react.html
 
 - ChartHandler: State=[{date, plus, minus}, ...]
   - Chart: Props=[{date, plus, minus}, ...]
-  - ChartControls State{plus, minus} Props={update function}
+  - ChartInput State{plus, minus} Props={update function}
     - NumberInput: Props={plus}
     - NumberInput: Props={minus}
     - SubmitButton: Props={onSubmit = update function}

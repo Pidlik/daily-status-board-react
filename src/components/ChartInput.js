@@ -67,7 +67,7 @@ class ChartInput extends React.Component {
     }
 
     if(nrPlus > Constants.MAX_DATA_INPUT || nrMinus > Constants.MAX_DATA_INPUT) {
-      TRACE_DEBUG('No valid input data, (nrPlus or nrMinus > MAX_DATA_INPUT(' + Constants.MAX_DATA_INPUT + '))');
+      TRACE_DEBUG('No valid input data, (nrPlus or nrMinus > MAX_DATA_INPUT (' + Constants.MAX_DATA_INPUT + '))');
       return false;
     }
 
