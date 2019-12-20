@@ -1,4 +1,5 @@
 import React from 'react'
+import Cookies from 'js-cookie'
 
 import './ChartHandler.css'
 
@@ -7,7 +8,7 @@ import ChartInput from './ChartInput'
 import * as Constants from './constants'
 import * as DatesHelper from './dates'
 import TRACE_DEBUG from './trace'
-import Cookies from 'js-cookie'
+import * as Random from './random'
 
 function getRandomTestData(numItems) {
   let data = [];
@@ -17,8 +18,8 @@ function getRandomTestData(numItems) {
 
     data.push({
       label: DatesHelper.getWeekdayName(date),
-      nrPlus: Math.round(20 + 80 * Math.random()),
-      nrMinus: Math.round(20 + 80 * Math.random()) * -1,
+      nrPlus: Random.randomIntFromInterval(0, Constants.MAX_DATA_INPUT),
+      nrMinus: Random.randomIntFromInterval(0, Constants.MAX_DATA_INPUT) * -1,
       date: DatesHelper.getIsoDate(date),
     });
   }
@@ -30,7 +31,7 @@ class ChartHandler extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // data=[{label, nrPlus, nrMinus, date}, ...]
+      // dataArray = [{label, nrPlus, nrMinus, date}, ...]
       dataArray: []
     };
 
