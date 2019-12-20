@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './ChartControls.css'
+import './ChartInput.css'
 import DEBUG from './trace'
 import * as Constants from './constants'
 
@@ -39,7 +39,7 @@ function SubmitButton(props) {
   );
 }
 
-class ChartControls extends React.Component {
+class ChartInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -119,4 +119,4 @@ class ChartControls extends React.Component {
   }
 }
 
-export default ChartControls;
+export default ChartInput;

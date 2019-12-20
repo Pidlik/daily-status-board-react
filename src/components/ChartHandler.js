@@ -3,18 +3,18 @@ import React from 'react';
 import './ChartHandler.css';
 
 import BarChart from './Chart';
-import ChartControls from './ChartControls'
+import ChartInput from './ChartInput'
 import * as Constants from './constants'
 import DEBUG from './trace'
 
-// Data generation
-function getRandomArray(numItems) {
-  // Create random array of objects
-  let names = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+function getRandomTestData(numItems) {
   let data = [];
   for(var i = 0; i < numItems; i++) {
+    let date = new Date();
+    date.setDate(new Date().getDate() - (numItems - i)); // Start numItems days ago and count up
+
     data.push({
-      label: names[i],
+      label: date.toISOString().slice(0,10), // YYYY-MM-DD
       plus: Math.round(20 + 80 * Math.random()),
       minus: Math.round(20 + 80 * Math.random()) * -1
     });
@@ -22,54 +22,13 @@ function getRandomArray(numItems) {
   return data;
 }
 
-// function getRandomDateArray(numItems) {
-//   // Create random array of objects (with date)
-//   let data = [];
-//   let baseTime = new Date('2018-05-01T00:00:00').getTime();
-//   let dayMs = 24 * 60 * 60 * 1000;
-//   for(var i = 0; i < numItems; i++) {
-//     data.push({
-//       time: new Date(baseTime + i * dayMs),
-//       value: Math.round(20 + 80 * Math.random())
-//     });
-//   }
-//   return data;
-// }
-
-function getData() {
-  let data = [];
-
-  // data.push({
-  //   title: 'Visits',
-  //   data: getRandomDateArray(150)
-  // });
-
-  data.push({
-    title: 'Categories',
-    data: getRandomArray(20)
-  });
-
-  // data.push({
-  //   title: 'Categories',
-  //   data: getRandomArray(10)
-  // });
-
-  // data.push({
-  //   title: 'Data 4',
-  //   data: getRandomArray(6)
-  // });
-
-  return data;
-}
-
 class ChartHandler extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       // data=[{label, plus, minus}, ...]
-      dataArray: getRandomArray(10)//getData()
+      dataArray: []
     };
 
     this.updateChart = this.updateChart.bind(this);
@@ -77,12 +36,31 @@ class ChartHandler extends React.Component {
 
   updateChart(plus, minus) {
     let data = this.state.dataArray;
-    let newData = {label: new Date().toISOString().slice(0,10), plus: plus, minus: minus * -1};
+    let todaysDate = new Date().toISOString().slice(0,10); // YYYY-MM-DD
+    let newData = {label: todaysDate, plus: plus, minus: minus * -1};
 
-    if(data.length >= 10) {
-      DEBUG('Dataset data is longer than MAX_DATA_LENGTH (' + Constants.MAX_DATA_LENGTH + '), removing first datapoint');
-      // Remove first value in array
+    // Overwrite last data input if submitting new data on the same day
+    if(todaysDate === data[data.length - 1].label) {
+      DEBUG('Overwriting last datapoint');
+
+      data[data.length - 1] = newData;
+      this.setState({
+        dataArray: data
+      });
+
+      return;
+    }
+
+    // Remove first value in array
+    if (data.length >= Constants.MAX_DATA_LENGTH) {
+      DEBUG('At max data length (' + Constants.MAX_DATA_LENGTH + '), removing first datapoint');
+
       data.shift();
+      this.setState({
+        dataArray: [...data, newData]
+      });
+
+      return;
     }
 
     this.setState({
@@ -91,8 +69,8 @@ class ChartHandler extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ data: getData() });
-    
+    this.setState({ dataArray: getRandomTestData(8) });
+
     // window.setInterval(() => {
     //   this.setState({
     //     data: getData()
@@ -104,7 +82,7 @@ class ChartHandler extends React.Component {
     return(
       <React.Fragment>
         <BarChart data={this.state.dataArray} />
-        <ChartControls onSubmit={this.updateChart} />
+        <ChartInput onSubmit={this.updateChart} />
       </React.Fragment>
     );
   }
