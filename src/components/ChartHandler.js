@@ -16,8 +16,8 @@ function getRandomTestData(numItems) {
 
     data.push({
       label: DatesHelper.getWeekdayName(date),
-      plus: Math.round(20 + 80 * Math.random()),
-      minus: Math.round(20 + 80 * Math.random()) * -1,
+      nrPlus: Math.round(20 + 80 * Math.random()),
+      nrMinus: Math.round(20 + 80 * Math.random()) * -1,
       date: DatesHelper.getIsoDate(date),
     });
   }
@@ -29,18 +29,18 @@ class ChartHandler extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // data=[{label, plus, minus, date}, ...]
+      // data=[{label, nrPlus, nrMinus, date}, ...]
       dataArray: []
     };
 
     this.updateChart = this.updateChart.bind(this);
   }
 
-  updateChart(plus, minus) {
+  updateChart(nrPlus, nrMinus) {
     let data = this.state.dataArray;
     let todaysDate = DatesHelper.getIsoDate();
     // TODO: Add yesterdays weekdayName? Cause we're reporting for yesterday?
-    let newData = {label: DatesHelper.getWeekdayName(), plus: plus, minus: minus * -1, date: todaysDate};
+    let newData = {label: DatesHelper.getWeekdayName(), nrPlus: nrPlus, nrMinus: nrMinus * -1, date: todaysDate};
 
     // Overwrite last data input if submitting new data on the same day
     if(data[data.length - 1].date === todaysDate) {
