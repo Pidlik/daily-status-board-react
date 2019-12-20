@@ -23,7 +23,7 @@ class ControlledNumberInput extends React.Component {
           readOnly
         />
         <button 
-          className={"plus-minus-button" + " " + this.props.buttonClass}
+          className={`plus-minus-button ${this.props.buttonClass}`}
           onClick={this.updateNumber}
         >
           {this.props.buttonText}
@@ -58,7 +58,7 @@ class ChartControls extends React.Component {
   }
 
   isValidInput(nrPlus, nrMinus) {
-   if(nrPlus == 0 && nrMinus == 0) {
+   if(nrPlus === 0 && nrMinus === 0) {
       DEBUG('No valid input data (nrPlus: 0, nrMinus: 0)');
       return false;
     } else if(nrPlus < 0 || nrMinus < 0) {
