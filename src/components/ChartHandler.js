@@ -1,12 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import './ChartHandler.css';
+import './ChartHandler.css'
 
-import BarChart from './Chart';
+import BarChart from './Chart'
 import ChartInput from './ChartInput'
 import * as Constants from './constants'
 import * as DatesHelper from './dates'
 import TRACE_DEBUG from './trace'
+import Cookies from 'js-cookie'
 
 function getRandomTestData(numItems) {
   let data = [];
@@ -72,13 +73,25 @@ class ChartHandler extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ dataArray: getRandomTestData(8) });
+    let cookiesData = Cookies.getJSON(Constants.COOKIES_NAME);
+    if(cookiesData !== undefined) {
+      TRACE_DEBUG('Initiating chart with previously saved data');
+      this.setState({ dataArray: cookiesData });
+    }
+    else {
+      TRACE_DEBUG('Initiating chart with random test data');
+      this.setState({ dataArray: getRandomTestData(8) });
+    }    
 
     // window.setInterval(() => {
     //   this.setState({
     //     data: getData()
     //   })
     // }, 5000)
+  }
+
+  componentDidUpdate() {
+    Cookies.set(Constants.COOKIES_NAME, this.state.dataArray);
   }
 
   render() {
