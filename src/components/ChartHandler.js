@@ -77,7 +77,7 @@ class ChartHandler extends React.Component {
 
   updateChart(plus, minus) {
     let data = this.state.dataArray;
-    let newData = {label: Math.round(20 + 80 * Math.random()), plus: plus, minus: minus * -1};
+    let newData = {label: new Date().toISOString().slice(0,10), plus: plus, minus: minus * -1};
 
     if(data.length >= 10) {
       DEBUG('Dataset data is longer than MAX_DATA_LENGTH (' + Constants.MAX_DATA_LENGTH + '), removing first datapoint');
