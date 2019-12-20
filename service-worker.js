@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/daily-status-board-react/precache-manifest.d44856688f713f1e747f4dce0fd50c2c.js"
+  "/daily-status-board-react/precache-manifest.32edea7b6b035fa6c58bee2bd7b9cf16.js"
 );
 
 self.addEventListener('message', (event) => {
