@@ -5,7 +5,7 @@ import './ChartHandler.css';
 import BarChart from './Chart';
 import ChartInput from './ChartInput'
 import * as Constants from './constants'
-import DEBUG from './trace'
+import TRACE_DEBUG from './trace'
 
 function getRandomTestData(numItems) {
   let data = [];
@@ -41,7 +41,7 @@ class ChartHandler extends React.Component {
 
     // Overwrite last data input if submitting new data on the same day
     if(todaysDate === data[data.length - 1].label) {
-      DEBUG('Overwriting last datapoint');
+      TRACE_DEBUG('Overwriting last datapoint');
 
       data[data.length - 1] = newData;
       this.setState({
@@ -53,7 +53,7 @@ class ChartHandler extends React.Component {
 
     // Remove first value in array
     if (data.length >= Constants.MAX_DATA_LENGTH) {
-      DEBUG('At max data length (' + Constants.MAX_DATA_LENGTH + '), removing first datapoint');
+      TRACE_DEBUG('At max data length (' + Constants.MAX_DATA_LENGTH + '), removing first datapoint');
 
       data.shift();
       this.setState({

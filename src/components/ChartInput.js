@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './ChartInput.css'
-import DEBUG from './trace'
+import TRACE_DEBUG from './trace'
 import * as Constants from './constants'
 
 class ControlledNumberInput extends React.Component {
@@ -59,15 +59,15 @@ class ChartInput extends React.Component {
 
   isValidInput(nrPlus, nrMinus) {
    if(nrPlus === 0 && nrMinus === 0) {
-      DEBUG('No valid input data (nrPlus: 0, nrMinus: 0)');
+      TRACE_DEBUG('No valid input data (nrPlus: 0, nrMinus: 0)');
       return false;
     } else if(nrPlus < 0 || nrMinus < 0) {
-      DEBUG('No valid input data (nrPlus < 0 or nrMinus < 0)');
+      TRACE_DEBUG('No valid input data (nrPlus < 0 or nrMinus < 0)');
       return false;
     }
 
     if(nrPlus > Constants.MAX_DATA_INPUT || nrMinus > Constants.MAX_DATA_INPUT) {
-      DEBUG('No valid input data, (nrPlus or nrMinus > MAX_DATA_INPUT(' + Constants.MAX_DATA_INPUT + '))');
+      TRACE_DEBUG('No valid input data, (nrPlus or nrMinus > MAX_DATA_INPUT(' + Constants.MAX_DATA_INPUT + '))');
       return false;
     }
 

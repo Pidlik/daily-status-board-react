@@ -1,6 +1,6 @@
 import * as Constants from './constants'
 
-export default function DEBUG(string) {
+export default function TRACE_DEBUG(string) {
   if(Constants.ENABLE_DEBUG === true) {
     console.log('[DEBUG] ' + string);
   }
