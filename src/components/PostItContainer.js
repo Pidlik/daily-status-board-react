@@ -1,7 +1,15 @@
 import React from 'react'
-import Cookies from 'js-cookie'
 
 import './PostItContainer.css'
+
+function PostIt(props) {
+  // https://stackoverflow.com/questions/30730369/reactjs-component-not-rendering-textarea-with-state-variable
+  return(
+    <div className="postit" draggable="true" onDragStart={props.onDragStart} id="">
+      <textarea id="" defaultValue="test test test" />
+    </div>
+  );
+}
 
 class PostItContainer extends React.Component {
 
@@ -23,6 +31,7 @@ class PostItContainer extends React.Component {
   render() {
     return(
       <div className="post-it-container">
+        <PostIt />
       </div>
     );
   }

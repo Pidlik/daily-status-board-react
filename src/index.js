@@ -14,9 +14,10 @@ https://reactjs.org/docs/thinking-in-react.html
     - NumberInput: Props={nrMinus}
     - SubmitButton: Props={onSubmit = update function}
 
-- PostItHandler: State=[]
-  - PostItContainer
-  - PostItControls
+- PostItHandler: State=[{ nrPostIts, Postits{ position, text } }]
+  - PostItContainer Props={ [PostIts, ...] }
+    - [PostIt, ...]
+  - PostItControls Props={nrPostIts}
     - AddPostItButton
     - Trashcan
 

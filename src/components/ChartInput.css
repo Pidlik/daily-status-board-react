@@ -65,24 +65,3 @@ input {
   font-weight: bold;
   border: 0.1px solid .555555;
 }
-
-button {
-  background: rgb(255, 165, 0); /* Orange */
-  border: none;
-  color: white;
-  width: 20%;
-  height: 50%;
-  text-align: center;
-  text-decoration: none;
-  font-size: 2rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:hover{
-  background: rgb(255, 140, 0); /* Dark Orange */
-}
-
-.submitData {
-  margin: 1%;
-}
