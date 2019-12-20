@@ -5,8 +5,15 @@ import './PostItContainer.css'
 function PostIt(props) {
   // https://stackoverflow.com/questions/30730369/reactjs-component-not-rendering-textarea-with-state-variable
   return(
-    <div className="postit" draggable="true" onDragStart={props.onDragStart} id="">
-      <textarea id="" defaultValue="test test test" />
+    // const style = {
+    //   top: {props.top}, 
+    //   left: {props.left},
+    // }
+
+    <div className="postit" draggable="true" onDragStart={props.onDragStart} id={props.id}
+      // style={style}
+    >
+      <textarea defaultValue={props.text}/>
     </div>
   );
 }
@@ -31,7 +38,15 @@ class PostItContainer extends React.Component {
   render() {
     return(
       <div className="post-it-container">
-        <PostIt />
+        {this.props.postIts.map(postIt => (
+          <PostIt
+            top={postIt.pos.top}
+            left={postIt.pos.left}
+            text={postIt.text}
+            id={postIt.key}
+            key={postIt.key}
+          />
+        ))}
       </div>
     );
   }

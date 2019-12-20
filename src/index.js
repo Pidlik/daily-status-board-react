@@ -15,11 +15,11 @@ https://reactjs.org/docs/thinking-in-react.html
     - SubmitButton: Props={onSubmit = update function}
 
 - PostItHandler: State=[{ nrPostIts, Postits{ position, text } }]
-  - PostItContainer Props={ [PostIts, ...] }
+  - PostItContainer: Props={ [PostIts, ...] }
     - [PostIt, ...]
-  - PostItControls Props={nrPostIts}
-    - AddPostItButton
-    - Trashcan
+  - PostItControls: Props={nrPostIts, add/delete post it function}
+    - AddPostItButton: Props={add post it function}
+    - Trashcan: Props={delete post it function}
 
 Deploy to GitHub Pages:
 https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f
