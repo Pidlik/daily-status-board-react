@@ -5,6 +5,7 @@ import './ChartHandler.css';
 import BarChart from './Chart';
 import ChartInput from './ChartInput'
 import * as Constants from './constants'
+import * as DatesHelper from './dates'
 import TRACE_DEBUG from './trace'
 
 function getRandomTestData(numItems) {
@@ -14,9 +15,10 @@ function getRandomTestData(numItems) {
     date.setDate(new Date().getDate() - (numItems - i)); // Start numItems days ago and count up
 
     data.push({
-      label: date.toISOString().slice(0,10), // YYYY-MM-DD
+      label: DatesHelper.getWeekdayName(date),
       plus: Math.round(20 + 80 * Math.random()),
-      minus: Math.round(20 + 80 * Math.random()) * -1
+      minus: Math.round(20 + 80 * Math.random()) * -1,
+      date: DatesHelper.getIsoDate(date),
     });
   }
   return data;
@@ -27,7 +29,7 @@ class ChartHandler extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // data=[{label, plus, minus}, ...]
+      // data=[{label, plus, minus, date}, ...]
       dataArray: []
     };
 
@@ -36,11 +38,12 @@ class ChartHandler extends React.Component {
 
   updateChart(plus, minus) {
     let data = this.state.dataArray;
-    let todaysDate = new Date().toISOString().slice(0,10); // YYYY-MM-DD
-    let newData = {label: todaysDate, plus: plus, minus: minus * -1};
+    let todaysDate = DatesHelper.getIsoDate();
+    // TODO: Add yesterdays weekdayName? Cause we're reporting for yesterday?
+    let newData = {label: DatesHelper.getWeekdayName(), plus: plus, minus: minus * -1, date: todaysDate};
 
     // Overwrite last data input if submitting new data on the same day
-    if(todaysDate === data[data.length - 1].label) {
+    if(data[data.length - 1].date === todaysDate) {
       TRACE_DEBUG('Overwriting last datapoint');
 
       data[data.length - 1] = newData;
