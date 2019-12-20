@@ -2,20 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import ChartHandler from './components/ChartHandler';
-// import PostItHandler from './components/post_it_handler/post_it_handler';
+import PostItHandler from './components/PostItHandler';
 
 /*
 https://reactjs.org/docs/thinking-in-react.html
 
-- ChartHandler: State=[{date, plus, minus}, ...]
-  - Chart: Props=[{date, plus, minus}, ...]
-  - ChartInput State{plus, minus} Props={update function}
-    - NumberInput: Props={plus}
-    - NumberInput: Props={minus}
+- ChartHandler: State=[{label, nrPlus, nrMinus, date}, ...]
+  - Chart: Props=[{date, nrPlus, nrMinus}, ...]
+  - ChartInput State{nrPlus, nrMinus} Props={update function}
+    - NumberInput: Props={nrPlus}
+    - NumberInput: Props={nrMinus}
     - SubmitButton: Props={onSubmit = update function}
 
-- PostItHandler
-  - TBD
+- PostItHandler: State=[]
+  - PostItContainer
+  - PostItControls
+    - AddPostItButton
+    - Trashcan
 
 Deploy to GitHub Pages:
 https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f
@@ -68,4 +71,4 @@ class ControlledNameInput extends React.Component {
 */
 
 ReactDOM.render(<ChartHandler />, document.getElementById('chart-handler'));
-// ReactDOM.render(<PostItHandler />, document.getElementById('right-container'));
+ReactDOM.render(<PostItHandler />, document.getElementById('post-it-handler'));

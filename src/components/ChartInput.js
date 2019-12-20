@@ -82,12 +82,6 @@ class ChartInput extends React.Component {
     this.reset();
   }
 
-  // handleChange = (event) => {
-  //   let name = event.target.name;
-  //   let value = event.target.value;
-  //   this.setState({[name]: value});
-  // }
-
   updatePlus() {
     this.setState({nrPlus: this.state.nrPlus + 1});
   }
