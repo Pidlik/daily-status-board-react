@@ -18,7 +18,7 @@ function getRandomTestData(numItems) {
         left: `Random.randomIntFromInterval(0, 200)px`
       },
       text: DatesHelper.getWeekdayName(),
-      key: `post-it-note-${i}`,
+      key: `post-it-note-${i+Random.randomIntFromInterval(0, 1000)}`,
     });
   }
   return data;
@@ -29,12 +29,23 @@ class PostItHandler extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+      postIts: [],
     };
+
+    this.addPostIt = this.addPostIt.bind(this);
+  }
+
+  addPostIt() {
+    TRACE_DEBUG('Add post it');
+    this.setState({
+      postIts: [...this.state.postIts, getRandomTestData(1)[0]],
+    });
   }
 
   componentDidMount() {
-
+    this.setState({
+      postIts: getRandomTestData(5),
+    });
   }
 
   componentDidUpdate() {
@@ -42,11 +53,10 @@ class PostItHandler extends React.Component {
   }
 
   render() {
-    console.log(getRandomTestData(8));
     return(
       <React.Fragment>
-        <PostItContainer postIts={getRandomTestData(8)} />
-        <PostItControls />
+        <PostItContainer postIts={this.state.postIts} />
+        <PostItControls addPostIt={this.addPostIt} />
       </React.Fragment>
     );
   }

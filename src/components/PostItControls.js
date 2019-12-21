@@ -6,7 +6,7 @@ import img from '../assets/images/trashcan.png'
 
 function AddPostItButton(props) {
   return(
-    <button className="add-post-it">Add Post It</button>
+    <button onClick={props.onClick} className="add-post-it">Add Post It</button>
   );
 }
 
@@ -34,7 +34,7 @@ class PostItControls extends React.Component {
   render() {
     return (
       <div className="post-it-controls">
-        <AddPostItButton />
+        <AddPostItButton onClick={this.props.addPostIt} />
         <Trashcan />
       </div>
     );
