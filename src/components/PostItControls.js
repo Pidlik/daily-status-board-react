@@ -11,7 +11,6 @@ function AddPostItButton(props) {
 }
 
 function Trashcan(props) {
-  // https://stackoverflow.com/questions/30730369/reactjs-component-not-rendering-textarea-with-state-variable
   // onDragEnter="drag_enter(event)"
   // onDragLeave="drag_leave(event)"
   // onDrop="drop_trashcan(event)"
