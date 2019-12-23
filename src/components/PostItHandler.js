@@ -1,4 +1,5 @@
 import React from 'react'
+import Cookies from 'js-cookie'
 
 import './PostItHandler.css'
 
@@ -8,6 +9,7 @@ import PostItControls from './PostItControls'
 import * as DatesHelper from './dates'
 import TRACE_DEBUG from './trace'
 import * as Random from './random'
+import * as Constants from './constants'
 
 function getRandomTestData(numItems) {
   let data = [];
@@ -53,13 +55,23 @@ class PostItHandler extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      postIts: getRandomTestData(5),
-    });
+    let cookiesData = Cookies.getJSON(Constants.COOKIES_NAME_POST_IT);
+    if(cookiesData !== undefined) {
+      TRACE_DEBUG('Initiating post it handler with previously saved data');
+      this.setState({ postIts: cookiesData });
+    }
+    else {
+      TRACE_DEBUG('Initiating post it handler with random test data');
+      this.setState({ postIts: getRandomTestData(5) });
+    }
   }
 
   componentDidUpdate() {
+    Cookies.set(Constants.COOKIES_NAME_POST_IT, this.state.postIts);
+  }
 
+  componentWillUnmount() {
+    Cookies.set(Constants.COOKIES_NAME_POST_IT, this.state.postIts);
   }
 
   render() {

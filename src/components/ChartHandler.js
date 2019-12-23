@@ -74,7 +74,7 @@ class ChartHandler extends React.Component {
   }
 
   componentDidMount() {
-    let cookiesData = Cookies.getJSON(Constants.COOKIES_NAME);
+    let cookiesData = Cookies.getJSON(Constants.COOKIES_NAME_CHART);
     if(cookiesData !== undefined) {
       TRACE_DEBUG('Initiating chart with previously saved data');
       this.setState({ dataArray: cookiesData });
@@ -92,7 +92,7 @@ class ChartHandler extends React.Component {
   }
 
   componentDidUpdate() {
-    Cookies.set(Constants.COOKIES_NAME, this.state.dataArray);
+    Cookies.set(Constants.COOKIES_NAME_CHART, this.state.dataArray);
   }
 
   render() {
