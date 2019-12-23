@@ -46,6 +46,8 @@ class PostItContainer extends React.Component {
     super(props);
     this.state = {
       draggedPostIt: {},
+      eventClientX: 0,
+      eventClientY: 0
     };
   }
 
@@ -58,41 +60,38 @@ class PostItContainer extends React.Component {
   }
 
   onDragStart = (event, postIt) => {
-    // event.preventDefault();
-    console.log('onDragStart SDFSDOIFHSDOIFHSODIFHSODHFSDOIFSDHFSDOFHSDOIHFOISDHOFHSDOFHI');
-    console.log(postIt);
+    console.log('################### onDragStart');
+    console.log('event.clientX: ' + event.clientX);
+    console.log('postIt.pos.left: ' + postIt.pos.left);
+    console.log('event.clientX - parseInt(postIt.pos.left, 10): ' + (event.clientX - parseInt(postIt.pos.left, 10)));
     this.setState({
       draggedPostIt: postIt,
+      eventClientX: event.clientX - parseInt(postIt.pos.left, 10),
+      eventClientY: event.clientY - parseInt(postIt.pos.top, 10),
     });
-    console.log(this.state.draggedPostIt);
   }
 
   onDragOver = (event) => {
     event.preventDefault();
-    console.log('onDragOver');
   }
 
   onDrop = (event) => {
-    console.log('onDrop');
-    console.log("event.clientX: " + event.clientX);
-    console.log("event.clientY: " + event.clientY);
-    console.log(this.state.draggedPostIt);
+    console.log('################### onDrop');
+    console.log("event.clientX - 837: " + (event.clientX - 837));
+    console.log("event.clientY - 5.5: " + (event.clientY - 5.5));
+
     let stuff = ReactDOM.findDOMNode(this).getBoundingClientRect();
-    console.log(stuff);
+    // console.log(stuff);
+
     let draggedPostIt = this.state.draggedPostIt;
-    draggedPostIt.pos.top = (stuff.y > event.clientY ? stuff.y - event.clientY : event.clientY - stuff.y) + 'px';
-    draggedPostIt.pos.left = event.clientX - stuff.x + 'px';
-    // this.state.draggedPostIt.position.x = event.clientX;
-    this.forceUpdate();
-    // const { completedTasks, draggedTask, todos } = this.state;
-    
+    draggedPostIt.pos.top = (event.clientY + 5.5) - this.state.eventClientY + 'px';
+    draggedPostIt.pos.left = (event.clientX) - this.state.eventClientX + 'px';
+
     this.setState({
       // completedTasks: [...completedTasks, draggedTask],
       // todos: todos.filter(task => task.taskID !== draggedTask.taskID),
-      draggedPostIt: draggedPostIt,
+      // draggedPostIt: draggedPostIt,
     });
-    console.log(this.state.draggedPostIt);
-
   }
 
   render() {
