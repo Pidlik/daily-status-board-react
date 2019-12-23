@@ -36,6 +36,33 @@ class PostItHandler extends React.Component {
 
     this.addPostIt = this.addPostIt.bind(this);
     this.handlePostItChange = this.handlePostItChange.bind(this);
+    this.componentCleanup = this.componentCleanup.bind(this);
+  }
+
+  componentDidMount() {
+    let cookiesData = Cookies.getJSON(Constants.COOKIES_NAME_POST_IT);
+    if(cookiesData !== undefined) {
+      TRACE_DEBUG('Initiating post it handler with previously saved data');
+      this.setState({ postIts: cookiesData });
+    }
+    else {
+      TRACE_DEBUG('Initiating post it handler with random test data');
+      this.setState({ postIts: getRandomTestData(5) });
+    }
+
+    // Call componentCleanup before the page reloads on refresh
+    window.addEventListener('beforeunload', this.componentCleanup);
+  }
+
+  componentWillUnmount() {
+    this.componentCleanup();
+
+    // Remove the event handler for normal unmounting
+    window.removeEventListener('beforeunload', this.componentCleanup);
+  }
+
+  componentCleanup() {
+    Cookies.set(Constants.COOKIES_NAME_POST_IT, this.state.postIts);
   }
 
   addPostIt() {
@@ -61,23 +88,6 @@ class PostItHandler extends React.Component {
     this.setState({
       postIts: postItsCopy
     });
-  }
-
-  componentDidMount() {
-    let cookiesData = Cookies.getJSON(Constants.COOKIES_NAME_POST_IT);
-    if(cookiesData !== undefined) {
-      TRACE_DEBUG('Initiating post it handler with previously saved data');
-      this.setState({ postIts: cookiesData });
-    }
-    else {
-      TRACE_DEBUG('Initiating post it handler with random test data');
-      this.setState({ postIts: getRandomTestData(5) });
-    }
-  }
-
-  componentDidUpdate() {
-    // TODO: Just do this when unmounting or something
-    Cookies.set(Constants.COOKIES_NAME_POST_IT, this.state.postIts);
   }
 
   render() {
