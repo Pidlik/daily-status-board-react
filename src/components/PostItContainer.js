@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
 
 import './PostItContainer.css'
 
@@ -10,10 +9,17 @@ function PostIt(props) {
   }
 
   return(
-    <div className="postit" draggable="true" id={props.id} onDragStart={props.onDragStart}
+    <div
+      className="postit"
+      draggable="true"
+      id={props.id}
       style={style}
+      onDragStart={props.onDragStart}
     >
-      <textarea defaultValue={props.text}/>
+      <textarea
+        value={props.text}
+        onChange={props.onChange}
+      />
     </div>
   );
 }
@@ -58,15 +64,15 @@ class PostItContainer extends React.Component {
   }
 
   onDrop = (event) => {
-    let draggedPostIt = this.state.draggedPostIt;
+    let draggedPostItCopy = Object.assign({}, this.state.draggedPostIt);
 
     // Calculate the post its new position form the drop coordinates and the dragStart offset. This will place the
     // post it exaclty where you drop it, as oppossed its top left corner jumping to the coordinates of the cursor. 
-    draggedPostIt.pos.left = event.clientX - this.state.dragStartOffsetX + 'px';
-    draggedPostIt.pos.top = event.clientY - this.state.dragStartOffsetY + 'px';
+    draggedPostItCopy.pos.left = event.clientX - this.state.dragStartOffsetX + 'px';
+    draggedPostItCopy.pos.top = event.clientY - this.state.dragStartOffsetY + 'px';
 
     this.setState({
-      draggedPostIt: {},
+      draggedPostIt: draggedPostItCopy,
       dragStartOffsetX: 0,
       dragStartOffsetY: 0,
     });
@@ -78,7 +84,7 @@ class PostItContainer extends React.Component {
         onDrop={event => this.onDrop(event)}
         onDragOver={(event => this.onDragOver(event))}
       >
-        {this.props.postIts.map(postIt => (
+        {this.props.postIts.map((postIt, index) => (
           <PostIt
             left={postIt.pos.left}
             top={postIt.pos.top}
@@ -86,6 +92,7 @@ class PostItContainer extends React.Component {
             key={postIt.key}
             text={postIt.text}
             onDragStart={(event) => this.onDragStart(event, postIt)}
+            onChange={(event) => this.props.handlePostItChange(event, index) }
           />
         ))}
       </div>

@@ -33,12 +33,22 @@ class PostItHandler extends React.Component {
     };
 
     this.addPostIt = this.addPostIt.bind(this);
+    this.handlePostItChange = this.handlePostItChange.bind(this);
   }
 
   addPostIt() {
     TRACE_DEBUG('Add post it');
     this.setState({
       postIts: [...this.state.postIts, getRandomTestData(1)[0]],
+    });
+  }
+
+  handlePostItChange(event, index) {
+    let postItsCopy = Object.assign([], this.state.postIts);
+    postItsCopy[index].text = event.target.value;
+
+    this.setState({
+      postIts: postItsCopy
     });
   }
 
@@ -55,7 +65,7 @@ class PostItHandler extends React.Component {
   render() {
     return(
       <React.Fragment>
-        <PostItContainer postIts={this.state.postIts} />
+        <PostItContainer postIts={this.state.postIts} handlePostItChange={this.handlePostItChange} />
         <PostItControls addPostIt={this.addPostIt} />
       </React.Fragment>
     );
