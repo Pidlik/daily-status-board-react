@@ -35,15 +35,7 @@ class PostItContainer extends React.Component {
     };
   }
 
-  componentDidMount() {
-
-  }
-
-  componentDidUpdate() {
-
-  }
-
-  onDragStart = (event, postIt) => {
+  onDragStart = (event, index, postIt) => {
     // TODO: Explain better dude
     // Calculate how many pixels from the mouseclick (click and drag) to the side of the post it note.
     // The event.clientX/Y is the coordinates where the drag started (regards to the viewport). Taking those coordinates
@@ -54,6 +46,7 @@ class PostItContainer extends React.Component {
 
     this.setState({
       draggedPostIt: postIt,
+      index: index,
       dragStartOffsetX: dragStartOffsetX,
       dragStartOffsetY: dragStartOffsetY,
     });
@@ -71,11 +64,7 @@ class PostItContainer extends React.Component {
     draggedPostItCopy.pos.left = event.clientX - this.state.dragStartOffsetX + 'px';
     draggedPostItCopy.pos.top = event.clientY - this.state.dragStartOffsetY + 'px';
 
-    this.setState({
-      draggedPostIt: draggedPostItCopy,
-      dragStartOffsetX: 0,
-      dragStartOffsetY: 0,
-    });
+    this.props.handlePostItChange(event, this.state.index, draggedPostItCopy);
   }
 
   render() {
@@ -91,7 +80,7 @@ class PostItContainer extends React.Component {
             id={postIt.key}
             key={postIt.key}
             text={postIt.text}
-            onDragStart={(event) => this.onDragStart(event, postIt)}
+            onDragStart={(event) => this.onDragStart(event, index, postIt)}
             onChange={(event) => this.props.handlePostItChange(event, index) }
           />
         ))}

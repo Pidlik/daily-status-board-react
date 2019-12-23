@@ -45,9 +45,18 @@ class PostItHandler extends React.Component {
     });
   }
 
-  handlePostItChange(event, index) {
+  handlePostItChange(event, index, postIt) {
     let postItsCopy = Object.assign([], this.state.postIts);
-    postItsCopy[index].text = event.target.value;
+
+    if(event.type === 'drop') {
+      TRACE_DEBUG('handlePostItChange drop');
+      postItsCopy[index].pos.left = postIt.pos.left;
+      postItsCopy[index].pos.top = postIt.pos.top;
+    }
+    else if(event.type === 'change') {
+      // Textarea value changed
+      postItsCopy[index].text = event.target.value;
+    }
 
     this.setState({
       postIts: postItsCopy
@@ -67,10 +76,7 @@ class PostItHandler extends React.Component {
   }
 
   componentDidUpdate() {
-    Cookies.set(Constants.COOKIES_NAME_POST_IT, this.state.postIts);
-  }
-
-  componentWillUnmount() {
+    // TODO: Just do this when unmounting or something
     Cookies.set(Constants.COOKIES_NAME_POST_IT, this.state.postIts);
   }
 
