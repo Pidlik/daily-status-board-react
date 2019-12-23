@@ -3,33 +3,11 @@ import ReactDOM from 'react-dom';
 
 import './PostItContainer.css'
 
-// function drop(event) {
-//   var offset = event.dataTransfer.getData("Text").split(',');
-//   var dm = document.getElementById(offset[2]);
-
-//   if(dm != null && dm.className == "postit") {
-//     dm.style.left = (event.clientX + parseInt(offset[0],10)) + 'px';
-//     dm.style.top = (event.clientY + parseInt(offset[1],10)) + 'px';
-//   }
-
-//   event.preventDefault();
-//   return false;
-// }
-
-// function drag_over(event) {
-//   event.preventDefault();
-//   return false;
-// }
-
 function PostIt(props) {
-  // https://stackoverflow.com/questions/30730369/reactjs-component-not-rendering-textarea-with-state-variable
   const style = {
     top: props.top,
     left: props.left
   }
-
-  // console.log('top: ' + props.top);
-  // console.log('left: ' + props.left);
 
   return(
     <div className="postit" draggable="true" id={props.id} onDragStart={props.onDragStart}
@@ -46,8 +24,8 @@ class PostItContainer extends React.Component {
     super(props);
     this.state = {
       draggedPostIt: {},
-      eventClientX: 0,
-      eventClientY: 0
+      dragStartOffsetX: 0,
+      dragStartOffsetY: 0,
     };
   }
 
@@ -60,14 +38,18 @@ class PostItContainer extends React.Component {
   }
 
   onDragStart = (event, postIt) => {
-    console.log('################### onDragStart');
-    console.log('event.clientX: ' + event.clientX);
-    console.log('postIt.pos.left: ' + postIt.pos.left);
-    console.log('event.clientX - parseInt(postIt.pos.left, 10): ' + (event.clientX - parseInt(postIt.pos.left, 10)));
+    // TODO: Explain better dude
+    // Calculate how many pixels from the mouseclick (click and drag) to the side of the post it note.
+    // The event.clientX/Y is the coordinates where the drag started (regards to the viewport). Taking those coordinates
+    // minus the post its relative position will enable us to drop the post it without it jumping to where the mouse
+    // pointer is (the top left corner)
+    let dragStartOffsetX = event.clientX - parseInt(postIt.pos.left, 10);
+    let dragStartOffsetY = event.clientY - parseInt(postIt.pos.top, 10);
+
     this.setState({
       draggedPostIt: postIt,
-      eventClientX: event.clientX - parseInt(postIt.pos.left, 10),
-      eventClientY: event.clientY - parseInt(postIt.pos.top, 10),
+      dragStartOffsetX: dragStartOffsetX,
+      dragStartOffsetY: dragStartOffsetY,
     });
   }
 
@@ -76,21 +58,17 @@ class PostItContainer extends React.Component {
   }
 
   onDrop = (event) => {
-    console.log('################### onDrop');
-    console.log("event.clientX - 837: " + (event.clientX - 837));
-    console.log("event.clientY - 5.5: " + (event.clientY - 5.5));
-
-    let stuff = ReactDOM.findDOMNode(this).getBoundingClientRect();
-    // console.log(stuff);
-
     let draggedPostIt = this.state.draggedPostIt;
-    draggedPostIt.pos.top = (event.clientY + 5.5) - this.state.eventClientY + 'px';
-    draggedPostIt.pos.left = (event.clientX) - this.state.eventClientX + 'px';
+
+    // Calculate the post its new position form the drop coordinates and the dragStart offset. This will place the
+    // post it exaclty where you drop it, as oppossed its top left corner jumping to the coordinates of the cursor. 
+    draggedPostIt.pos.left = event.clientX - this.state.dragStartOffsetX + 'px';
+    draggedPostIt.pos.top = event.clientY - this.state.dragStartOffsetY + 'px';
 
     this.setState({
-      // completedTasks: [...completedTasks, draggedTask],
-      // todos: todos.filter(task => task.taskID !== draggedTask.taskID),
-      // draggedPostIt: draggedPostIt,
+      draggedPostIt: {},
+      dragStartOffsetX: 0,
+      dragStartOffsetY: 0,
     });
   }
 
@@ -102,11 +80,11 @@ class PostItContainer extends React.Component {
       >
         {this.props.postIts.map(postIt => (
           <PostIt
-            top={postIt.pos.top}
             left={postIt.pos.left}
-            text={postIt.text}
+            top={postIt.pos.top}
             id={postIt.key}
             key={postIt.key}
+            text={postIt.text}
             onDragStart={(event) => this.onDragStart(event, postIt)}
           />
         ))}
