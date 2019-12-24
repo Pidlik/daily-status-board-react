@@ -25,7 +25,16 @@
   justify-content: center;
 }
 
+#trashcan-container img {
+  pointer-events: none;
+}
+
+.trashcan-container-drag-enter {
+  border: 3px dashed red;
+}
+
 .trashcan-image {
   object-fit: contain;
   max-height: 100%;
+  z-index: -99;
 }

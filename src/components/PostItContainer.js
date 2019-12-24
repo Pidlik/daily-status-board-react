@@ -36,6 +36,10 @@ class PostItContainer extends React.Component {
   }
 
   onDragStart = (event, index, postIt) => {
+    // Set index of post it here for the trashcan in PostItControls.js to be able to get it and delete
+    // the correct post it. TODO: Lift up state
+    event.dataTransfer.setData('postItIndex', index);
+
     // TODO: Explain better dude
     // Calculate how many pixels from the mouseclick (click and drag) to the side of the post it note.
     // The event.clientX/Y is the coordinates where the drag started (regards to the viewport). Taking those coordinates

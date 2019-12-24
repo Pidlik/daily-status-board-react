@@ -30,11 +30,13 @@ class PostItHandler extends React.Component {
 
   constructor(props) {
     super(props);
+    // TODO: Lift state up from both children components to better handle Drag n' Drop events
     this.state = {
       postIts: [],
     };
 
     this.addPostIt = this.addPostIt.bind(this);
+    this.removePostIt = this.removePostIt.bind(this);
     this.handlePostItChange = this.handlePostItChange.bind(this);
     this.componentCleanup = this.componentCleanup.bind(this);
   }
@@ -90,11 +92,25 @@ class PostItHandler extends React.Component {
     });
   }
 
+  removePostIt(event) {
+    // Drop event over trashcan
+    var index = event.dataTransfer.getData("postItIndex");
+
+    if(index !== undefined) {
+      let postItsCopy = Object.assign([], this.state.postIts);
+      postItsCopy.splice(index, 1);
+
+      this.setState({
+        postIts: postItsCopy
+      });
+    }
+  }
+
   render() {
     return(
       <React.Fragment>
         <PostItContainer postIts={this.state.postIts} handlePostItChange={this.handlePostItChange} />
-        <PostItControls addPostIt={this.addPostIt} />
+        <PostItControls addPostIt={this.addPostIt} removePostIt={this.removePostIt} />
       </React.Fragment>
     );
   }
