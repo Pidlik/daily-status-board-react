@@ -43,7 +43,6 @@ class PostItControls extends React.Component {
   }
 
   handleDragEnter(event) {
-    console.log('handleDragEnter');
     this.setState({
       isHoveringTrashcan: true
     });

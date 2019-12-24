@@ -68,7 +68,6 @@ class PostItHandler extends React.Component {
   }
 
   addPostIt() {
-    TRACE_DEBUG('Add post it');
     this.setState({
       postIts: [...this.state.postIts, getRandomTestData(1)[0]],
     });
@@ -78,7 +77,6 @@ class PostItHandler extends React.Component {
     let postItsCopy = Object.assign([], this.state.postIts);
 
     if(event.type === 'drop') {
-      TRACE_DEBUG('handlePostItChange drop');
       postItsCopy[index].pos.left = postIt.pos.left;
       postItsCopy[index].pos.top = postIt.pos.top;
     }
