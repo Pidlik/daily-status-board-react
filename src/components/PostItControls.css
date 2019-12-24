@@ -10,10 +10,6 @@
   justify-content: center;
 }
 
-.post-it-controls * {
-/*  pointer-events: none;*/
-}
-
 .trashcan-container {
   width: 20%;
   height: 55%;

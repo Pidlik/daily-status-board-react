@@ -66,3 +66,9 @@ button {
 button:hover{
   background: rgb(255, 140, 0); /* Dark Orange */
 }
+
+button:focus {
+    outline: 0;
+    outline-style:none;
+    outline-width:0;
+}
