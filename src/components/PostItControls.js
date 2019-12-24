@@ -2,7 +2,8 @@ import React from 'react';
 
 import './PostItControls.css'
 
-import img from '../assets/images/trashcan.png'
+import trashcanImage from '../assets/images/trashcan.png'
+import explosionGif from '../assets/images/trashcan_explosion.gif'
 
 function AddPostItButton(props) {
   return(
@@ -20,7 +21,8 @@ function Trashcan(props) {
       onDragOver={props.onDragOver}
       onDrop={props.onDrop}
     >
-        <img className="trashcan-image" src={img} alt="trashcan" />
+      {props.showExplosion && <img className="explosion-gif" src={explosionGif} alt="explosion" /> }
+      <img className="trashcan-image" src={trashcanImage} alt="trashcan" />
     </div>
   );
 }
@@ -36,6 +38,8 @@ class PostItControls extends React.Component {
     this.handleDragLeave = this.handleDragLeave.bind(this);
     this.handleDragOver = this.handleDragOver.bind(this);
     this.handleDrop = this.handleDrop.bind(this);
+    this.showExplosion = this.showExplosion.bind(this);
+    this.hideExplosion = this.hideExplosion.bind(this);
   }
 
   handleDragEnter(event) {
@@ -56,8 +60,26 @@ class PostItControls extends React.Component {
     });
   }
 
+  showExplosion() {
+    this.setState({
+      showExplosion: true
+    });
+  }
+
+  hideExplosion() {
+    this.setState({
+      showExplosion: false
+    });
+  }
+
   handleDrop(event) {
     this.handleDragLeave();
+    this.showExplosion();
+
+    // Theres a bug were the gif doesn't get "reset" and starts some frames in every second or third time
+    // https://stackoverflow.com/questions/10730212/proper-way-to-reset-a-gif-animation-with-displaynone-on-chrome
+    // The gif is 0.7 sec long, remove it after completion (minus 10 cause' you can see that it starts over)
+    setTimeout(this.hideExplosion, 690);
     this.props.removePostIt(event);
   }
 
@@ -68,6 +90,7 @@ class PostItControls extends React.Component {
         <Trashcan
           onDrop={this.handleDrop}
           isHoveringTrashcan={this.state.isHoveringTrashcan}
+          showExplosion={this.state.showExplosion}
           onDragEnter={this.handleDragEnter}
           onDragOver={this.handleDragOver}
           onDragLeave={this.handleDragLeave}
