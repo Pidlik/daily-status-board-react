@@ -48,3 +48,27 @@ html, body {
   font-size: 1rem;
   z-index: 999;
 }
+
+button {
+  background: rgb(255, 165, 0); /* Orange */
+  border: none;
+  color: white;
+  width: 20%;
+  height: 50%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0.5%;
+}
+
+button:hover{
+  background: rgb(255, 140, 0); /* Dark Orange */
+}
+
+button:focus {
+    outline: 0;
+    outline-style:none;
+    outline-width:0;
+}
