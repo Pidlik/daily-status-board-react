@@ -9,6 +9,13 @@ export function getIsoDate(date = new Date()) {
 }
 
 /**
+ * Returns the given date and time as YYYY-MM-DDTHH:mm:ss.sssZ (ISO 8601 format)
+ */
+export function getIsoDateAndTime(date = new Date()) {
+  return date.toISOString();
+}
+
+/**
  * Returns string 'Monday', 'Tuesday' etc.
  */
 export function getWeekdayName(date = new Date()) {

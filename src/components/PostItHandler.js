@@ -70,8 +70,13 @@ class PostItHandler extends React.Component {
   }
 
   addPostIt() {
+    let postIt = {
+      text: '',
+      key: DatesHelper.getIsoDateAndTime()
+    };
+
     this.setState({
-      postIts: [...this.state.postIts, getRandomTestData(1)[0]],
+      postIts: [...this.state.postIts, postIt],
     });
   }
 
