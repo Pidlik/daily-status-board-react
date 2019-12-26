@@ -9,8 +9,16 @@ import * as Constants from './constants'
 
 function AddPostItButton(props) {
   return(
-    <button onClick={props.onClick} className="add-post-it">Add Post It</button>
+    <button onClick={props.onClick} className="add-post-it">Add</button>
   );
+}
+
+function RemoveAllPostItsButton(props) {
+  if(props.show) {
+    return(
+      <button onClick={props.onClick} className="add-post-it">Remove All</button>
+    );
+  }
 }
 
 function Trashcan(props) {
@@ -115,6 +123,7 @@ class PostItControls extends React.Component {
           onDragOver={this.handleDragOver}
           onDragLeave={this.handleDragLeave}
         />
+        <RemoveAllPostItsButton onClick={this.props.removeAllPostIts} show={Constants.ENABLE_DEBUG} />
       </div>
     );
   }

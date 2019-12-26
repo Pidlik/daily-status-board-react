@@ -40,6 +40,7 @@ class PostItHandler extends React.Component {
     this.removePostIt = this.removePostIt.bind(this);
     this.handlePostItChange = this.handlePostItChange.bind(this);
     this.componentCleanup = this.componentCleanup.bind(this);
+    this.deleteAllPostIts = this.deleteAllPostIts.bind(this);
   }
 
   componentDidMount() {
@@ -105,11 +106,21 @@ class PostItHandler extends React.Component {
     }
   }
 
+  deleteAllPostIts() {
+    this.setState({
+      postIts: []
+    });
+  }
+
   render() {
     return(
       <React.Fragment>
         <PostItContainer postIts={this.state.postIts} handlePostItChange={this.handlePostItChange} />
-        <PostItControls addPostIt={this.addPostIt} removePostIt={this.removePostIt} />
+        <PostItControls
+          addPostIt={this.addPostIt}
+          removePostIt={this.removePostIt}
+          removeAllPostIts={this.deleteAllPostIts}
+        />
       </React.Fragment>
     );
   }
