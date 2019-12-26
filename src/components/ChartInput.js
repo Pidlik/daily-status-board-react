@@ -68,7 +68,7 @@ class ChartInput extends React.Component {
 
   // TODO: Duplicated code
   updatePlus(nr = 1) {
-    if(this.state.nrPlus === Constants.MAX_DATA_INPUT || this.state.nrPlus + nr < 0) {
+    if(this.state.nrPlus + nr > Constants.MAX_DATA_INPUT || this.state.nrPlus + nr < 0) {
       TRACE_DEBUG('Number input cannot exceed ' + Constants.MAX_DATA_INPUT + ' and not below 0');
       return;
     }
@@ -79,7 +79,7 @@ class ChartInput extends React.Component {
   }
 
   updateMinus(nr = 1) {
-    if(this.state.nrMinus === Constants.MAX_DATA_INPUT || this.state.nrMinus + nr < 0) {
+    if(this.state.nrMinus + nr > Constants.MAX_DATA_INPUT || this.state.nrMinus + nr < 0) {
       TRACE_DEBUG('Number input cannot exceed ' + Constants.MAX_DATA_INPUT + ' and not below 0');
       return;
     }
