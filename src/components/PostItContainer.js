@@ -3,9 +3,12 @@ import React from 'react'
 import './PostItContainer.css'
 
 function PostIt(props) {
-  const style = {
-    top: props.top,
-    left: props.left
+  let style = null;
+  if(props.pos !== undefined) {
+    style = {
+      top: props.pos.top,
+      left: props.pos.left
+    }
   }
 
   return(
@@ -45,8 +48,9 @@ class PostItContainer extends React.Component {
     // The event.clientX/Y is the coordinates where the drag started (regards to the viewport). Taking those coordinates
     // minus the post its relative position will enable us to drop the post it without it jumping to where the mouse
     // pointer is (the top left corner)
-    let dragStartOffsetX = event.clientX - parseInt(postIt.pos.left, 10);
-    let dragStartOffsetY = event.clientY - parseInt(postIt.pos.top, 10);
+    let postItStyle = window.getComputedStyle(event.target, null);
+    let dragStartOffsetX = event.clientX - parseInt(postItStyle.getPropertyValue('left'));
+    let dragStartOffsetY = event.clientY - parseInt(postItStyle.getPropertyValue('top'));
 
     this.setState({
       draggedPostIt: postIt,
@@ -64,9 +68,13 @@ class PostItContainer extends React.Component {
     let draggedPostItCopy = Object.assign({}, this.state.draggedPostIt);
 
     // Calculate the post its new position form the drop coordinates and the dragStart offset. This will place the
-    // post it exaclty where you drop it, as oppossed its top left corner jumping to the coordinates of the cursor. 
-    draggedPostItCopy.pos.left = event.clientX - this.state.dragStartOffsetX + 'px';
-    draggedPostItCopy.pos.top = event.clientY - this.state.dragStartOffsetY + 'px';
+    // post it exaclty where you drop it, as oppossed its top left corner jumping to the coordinates of the cursor.
+    let pos = {
+      left: event.clientX - this.state.dragStartOffsetX + 'px',
+      top: event.clientY - this.state.dragStartOffsetY + 'px'
+    };
+
+    draggedPostItCopy.pos = pos;
 
     this.props.handlePostItChange(event, this.state.index, draggedPostItCopy);
   }
@@ -79,8 +87,7 @@ class PostItContainer extends React.Component {
       >
         {this.props.postIts.map((postIt, index) => (
           <PostIt
-            left={postIt.pos.left}
-            top={postIt.pos.top}
+            pos={postIt.pos}
             id={postIt.key}
             key={postIt.key}
             text={postIt.text}

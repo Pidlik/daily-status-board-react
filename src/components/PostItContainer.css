@@ -6,7 +6,7 @@
 
 /* Code from: https://mentormate.com/blog/css-postit-note/ */
 .postit {
-    position: absolute;
+    position: relative;
     width: 13vw;
     height: 11.5vw;
     display: inline-block;

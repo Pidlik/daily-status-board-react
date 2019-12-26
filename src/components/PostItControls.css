@@ -23,6 +23,7 @@
 
 #trashcan-container img {
   pointer-events: none;
+  z-index: 999;
 }
 
 .trashcan-container-drag-enter {
@@ -32,7 +33,6 @@
 .trashcan-image {
   object-fit: contain;
   max-height: 100%;
-  z-index: -99;
 }
 
 .explosion-gif {

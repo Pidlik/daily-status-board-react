@@ -15,10 +15,10 @@ function getRandomTestData(numItems) {
   let data = [];
   for(var i = 0; i < numItems; i++) {
     data.push({
-      pos: {
-        top: `${Random.randomIntFromInterval(0, 400)}px`,
-        left: `${Random.randomIntFromInterval(0, 400)}px`
-      },
+      // pos: {
+      //   top: `${Random.randomIntFromInterval(0, 400)}px`,
+      //   left: `${Random.randomIntFromInterval(0, 400)}px`
+      // },
       text: DatesHelper.getWeekdayName(),
       key: `post-it-note-${i+Random.randomIntFromInterval(0, 1000)}`,
     });
@@ -79,8 +79,7 @@ class PostItHandler extends React.Component {
     let postItsCopy = Object.assign([], this.state.postIts);
 
     if(event.type === 'drop') {
-      postItsCopy[index].pos.left = postIt.pos.left;
-      postItsCopy[index].pos.top = postIt.pos.top;
+      postItsCopy[index].pos = postIt.pos;
     }
     else if(event.type === 'change') {
       // Textarea value changed
