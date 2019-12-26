@@ -21,9 +21,27 @@ function getRandomTestData(numItems) {
       nrPlus: Random.randomIntFromInterval(0, Constants.MAX_DATA_INPUT),
       nrMinus: Random.randomIntFromInterval(0, Constants.MAX_DATA_INPUT) * -1,
       date: DatesHelper.getIsoDate(date),
+      comment: `This is random comment nr${Random.randomIntFromInterval(0, 1000)}`
     });
   }
   return data;
+}
+
+function getDefaultCommentOfTheDay(nrPlus, nrMinus){
+  let commentOfTheDay;
+  if(nrPlus > nrMinus) {
+    if(nrMinus === 0) {
+      commentOfTheDay = "This day was quite pleasant";
+    } else {
+      commentOfTheDay = "Today, was a good day";
+    }
+  } else if(nrMinus > nrPlus) {
+    commentOfTheDay = "Mission failed we'll get 'em' next time";
+  } else {
+    commentOfTheDay = "I have no strong feelings one way or the other";
+  }
+
+  return commentOfTheDay;
 }
 
 class ChartHandler extends React.Component {
@@ -31,7 +49,7 @@ class ChartHandler extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // dataArray = [{label, nrPlus, nrMinus, date}, ...]
+      // dataArray = [{label, nrPlus, nrMinus, date, comment}, ...]
       dataArray: []
     };
 
@@ -42,7 +60,12 @@ class ChartHandler extends React.Component {
     let data = this.state.dataArray;
     let todaysDate = DatesHelper.getIsoDate();
     // TODO: Add yesterdays weekdayName? Cause we're reporting for yesterday?
-    let newData = {label: DatesHelper.getWeekdayName(), nrPlus: nrPlus, nrMinus: nrMinus * -1, date: todaysDate};
+    let newData = {
+      label: DatesHelper.getWeekdayName(),
+      nrPlus: nrPlus,
+      nrMinus: nrMinus * -1,
+      date: todaysDate,
+      comment: prompt("Comment of the day", getDefaultCommentOfTheDay(nrPlus, nrMinus))};
 
     // Overwrite last data input if submitting new data on the same day
     if(data[data.length - 1].date === todaysDate) {

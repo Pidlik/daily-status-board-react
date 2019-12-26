@@ -3,6 +3,7 @@ import Chart from 'chart.js';
 
 var chartData = {
   labels: [],
+  comments: [], // Not something from Chart JS
   datasets: [{
     label: 'Plus',
     backgroundColor: 'rgb(34, 175, 34, 0.6)', // Green, opacity
@@ -28,24 +29,30 @@ let chartOptions = {
     display: false,
   },
   tooltips: {
-    bodyFontSize: 36,
-    titleFontSize: 18,
-        // callbacks: {
-        //   title: function(tooltipItem, data) {
-        //     // console.log("You're hovering on index: " + tooltipItem[0]['index']);
-        //     return "Comment:";// + data['labels'][tooltipItem[0]['index']];
-        //   },
-        //   label: function(tooltipItem, data) {
-        //     // return data['datasets'][0]['data'][tooltipItem['index']];
-        //     let index = tooltipItem['index'];
-        //     return DAILY_COMMENTS[index];
-        //   },
-        //   afterLabel: function(tooltipItem, data) {
-        //     // var dataset = data['datasets'][0];
-        //     // var percent = Math.round((dataset['data'][tooltipItem['index']] / dataset["_meta"][0]['total']) * 100)
-        //     // return '(' + percent + '%)';
-        //   }
-        // }
+    bodyFontSize: 18,
+    titleFontSize: 24,
+      callbacks: {
+        title: function(tooltipItem, data) {
+          // return 'Comment of the day:';
+          return '';
+        },
+        label: function(tooltipItem, data) {
+          return '';
+        },
+        afterBody: function(tooltipItem, data) {
+          let index = tooltipItem[0]['index'];
+          let labelArray = [];
+          labelArray.push(data.comments[index]);
+          labelArray.push('Plus: ' + data.datasets[0].data[index]);
+          labelArray.push('Minus: ' + data.datasets[1].data[index]*-1);
+          return labelArray;
+        },
+      //   afterLabel: function(tooltipItem, data) {
+      //     // var dataset = data['datasets'][0];
+      //     // var percent = Math.round((dataset['data'][tooltipItem['index']] / dataset["_meta"][0]['total']) * 100)
+      //     // return '(' + percent + '%)';
+      //   }
+      }
   },
   scales: {
     xAxes: [{
@@ -83,6 +90,7 @@ class BarChart extends React.Component {
     this.myChart.data.labels = this.props.data.map(d => d.label);
     this.myChart.data.datasets[0].data = this.props.data.map(d => d.nrPlus);
     this.myChart.data.datasets[1].data = this.props.data.map(d => d.nrMinus);
+    this.myChart.data.comments = this.props.data.map(d => d.comment);
     this.myChart.update();
   }
 
