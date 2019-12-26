@@ -19,6 +19,8 @@ function RemoveAllPostItsButton(props) {
       <button onClick={props.onClick} className="add-post-it">Remove All</button>
     );
   }
+
+  return null;
 }
 
 function Trashcan(props) {

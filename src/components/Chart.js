@@ -18,6 +18,9 @@ var chartData = {
   }]
 }; // chartData
 
+// TODO: Make text size responsive
+// https://github.com/chartjs/chartjs-plugin-datalabels/issues/27
+// https://chartjs-plugin-datalabels.netlify.com/guide/options.html#scriptable-options
 let chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
