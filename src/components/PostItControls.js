@@ -5,6 +5,8 @@ import './PostItControls.css'
 import trashcanImage from '../assets/images/trashcan.png'
 import explosionGif from '../assets/images/trashcan_explosion.gif'
 
+import * as Constants from './constants'
+
 function AddPostItButton(props) {
   return(
     <button onClick={props.onClick} className="add-post-it">Add Post It</button>
@@ -80,6 +82,25 @@ class PostItControls extends React.Component {
     // The gif is 0.7 sec long, remove it after completion (minus 10 cause' you can see that it starts over)
     setTimeout(this.hideExplosion, 690);
     this.props.removePostIt(event);
+  }
+
+  handleKeyDown(event) {
+    switch(event.keyCode) {
+      case Constants.POST_IT_KEY_ADD:
+        this.props.addPostIt();
+        break
+      default:
+        break
+    }
+  }
+
+  componentDidMount() {
+    // TODO: React's onKeyPress etc. doesn't work... and when it does work (with autofocus), it always unfocuses...
+    document.addEventListener("keydown", this.handleKeyDown.bind(this));
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyDown.bind(this));
   }
 
   render() {

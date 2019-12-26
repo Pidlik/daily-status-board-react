@@ -31,6 +31,7 @@ class PostItHandler extends React.Component {
   constructor(props) {
     super(props);
     // TODO: Lift state up from both children components to better handle Drag n' Drop events
+    // postIts = [{pos = { top, left }, text, key(id)}, ...]
     this.state = {
       postIts: [],
     };

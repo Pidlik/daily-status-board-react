@@ -4,33 +4,22 @@ import './ChartInput.css'
 import TRACE_DEBUG from './trace'
 import * as Constants from './constants'
 
-class ControlledNumberInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.updateNumber = this.updateNumber.bind(this);
-  }
-
-  updateNumber() {
-    this.props.updateNumber();
-  }
-
-  render() {
-    return (
-      <div className="plus-minus-container">
-        <input className="plus-minus-input"
-          type="number"
-          value={this.props.number}
-          readOnly
-        />
-        <button 
-          className={`plus-minus-button ${this.props.buttonClass}`}
-          onClick={this.updateNumber}
-        >
-          {this.props.buttonText}
-        </button>
-      </div>
-    );
-  }
+function ControlledNumberInput(props) {
+  return (
+    <div className="plus-minus-container">
+      <input className="plus-minus-input"
+        type="number"
+        value={props.number}
+        readOnly
+      />
+      <button
+        className={`plus-minus-button ${props.buttonClass}`}
+        onClick={(event) => props.updateNumber(1, event)} // "Hack" to rearange input
+      >
+        {props.buttonText}
+      </button>
+    </div>
+  );
 }
 
 function SubmitButton(props) {
@@ -47,7 +36,7 @@ class ChartInput extends React.Component {
       nrMinus: 0,
     };
 
-    this.isValidInput = this.isValidInput.bind(this);
+    this.hasValidInput = this.hasValidInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updatePlus = this.updatePlus.bind(this);
     this.updateMinus = this.updateMinus.bind(this);
@@ -57,17 +46,12 @@ class ChartInput extends React.Component {
     this.setState({nrPlus: 0, nrMinus: 0});
   }
 
-  isValidInput(nrPlus, nrMinus) {
-   if(nrPlus === 0 && nrMinus === 0) {
+  hasValidInput() {
+   if(this.state.nrPlus === 0 && this.state.nrMinus === 0) {
       TRACE_DEBUG('No valid input data (nrPlus: 0, nrMinus: 0)');
       return false;
-    } else if(nrPlus < 0 || nrMinus < 0) {
+    } else if(this.state.nrPlus < 0 || this.state.nrMinus < 0) {
       TRACE_DEBUG('No valid input data (nrPlus < 0 or nrMinus < 0)');
-      return false;
-    }
-
-    if(nrPlus > Constants.MAX_DATA_INPUT || nrMinus > Constants.MAX_DATA_INPUT) {
-      TRACE_DEBUG('No valid input data, (nrPlus or nrMinus > MAX_DATA_INPUT (' + Constants.MAX_DATA_INPUT + '))');
       return false;
     }
 
@@ -76,18 +60,64 @@ class ChartInput extends React.Component {
 
 
   handleSubmit() {
-    if(this.isValidInput(this.state.nrPlus, this.state.nrMinus)) {
+    if(this.hasValidInput()) {
       this.props.onSubmit(this.state.nrPlus, this.state.nrMinus);
     }
     this.reset();
   }
 
-  updatePlus() {
-    this.setState({nrPlus: this.state.nrPlus + 1});
+  // TODO: Duplicated code
+  updatePlus(nr = 1) {
+    if(this.state.nrPlus === Constants.MAX_DATA_INPUT || this.state.nrPlus + nr < 0) {
+      TRACE_DEBUG('Number input cannot exceed ' + Constants.MAX_DATA_INPUT + ' and not below 0');
+      return;
+    }
+
+    this.setState({
+      nrPlus: this.state.nrPlus + nr
+    });
   }
 
-  updateMinus() {
-    this.setState({nrMinus: this.state.nrMinus + 1});
+  updateMinus(nr = 1) {
+    if(this.state.nrMinus === Constants.MAX_DATA_INPUT || this.state.nrMinus + nr < 0) {
+      TRACE_DEBUG('Number input cannot exceed ' + Constants.MAX_DATA_INPUT + ' and not below 0');
+      return;
+    }
+
+    this.setState({
+      nrMinus: this.state.nrMinus + nr
+    });
+  }
+
+  handleKeyDown(event) {
+    switch(event.keyCode) {
+      case Constants.CHART_KEY_PLUS:
+        if(event.shiftKey)
+          this.updatePlus(-1);
+        else
+          this.updatePlus(1);
+        break
+      case Constants.CHART_KEY_MINUS:
+        if(event.shiftKey)
+          this.updateMinus(-1);
+        else
+          this.updateMinus(1);
+        break
+      case Constants.CHART_KEY_SUBMIT:
+        this.handleSubmit();
+        break
+      default:
+        break
+    }
+  }
+
+  componentDidMount() {
+    // TODO: React's onKeyPress etc. doesn't work... and when it does work (with autofocus), it always unfocuses...
+    document.addEventListener("keydown", this.handleKeyDown.bind(this));
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyDown.bind(this));
   }
 
   render() {
