@@ -5,6 +5,7 @@ export const COOKIES_NAME_CHART = 'ChartData';
 
 // PostItHandler.js
 export const COOKIES_NAME_POST_IT = 'PostIts';
+export const MAX_POST_ITS = 8;
 
 // ChartInput.js
 export const MAX_DATA_INPUT = 15;     // At most 15 +/- in input

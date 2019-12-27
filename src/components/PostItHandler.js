@@ -70,6 +70,11 @@ class PostItHandler extends React.Component {
   }
 
   addPostIt(event, isHelpPostIt = false) {
+    if(this.state.postIts.length === Constants.MAX_POST_ITS) {
+      alert(`Max number of postits (${Constants.MAX_POST_ITS}) already added...`);
+      return;
+    }
+
     let postIt = {
       text: isHelpPostIt ? Constants.HELP_TEXT : '',
       key: DatesHelper.getIsoDateAndTime()
