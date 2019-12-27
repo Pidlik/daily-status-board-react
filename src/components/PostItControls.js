@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import './PostItControls.css'
 
@@ -7,20 +8,28 @@ import explosionGif from '../assets/images/trashcan_explosion.gif'
 
 import * as Constants from './constants'
 
-function AddPostItButton(props) {
-  return(
-    <button onClick={props.onClick} className="add-post-it">Add</button>
-  );
-}
-
-function RemoveAllPostItsButton(props) {
-  if(props.show) {
-    return(
-      <button onClick={props.onClick} className="add-post-it">Remove All</button>
-    );
+class HelpButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.el = document.createElement('div');
   }
 
-  return null;
+  componentDidMount() {
+    document.body.appendChild(this.el);
+  }
+
+  componentWillUnmount() {
+    document.body.removeChild(this.el);
+  }
+
+  render() {
+    return ReactDOM.createPortal(
+      // Element(s) to render, put 'this.props.children' to render all children to HelpButton
+      <button className='help-button' onClick={event => this.props.onClick(event, true)}>Help</button>,
+      // Container to render the elements into
+      document.getElementById('help-root'),
+    );
+  }
 }
 
 function Trashcan(props) {
@@ -116,7 +125,8 @@ class PostItControls extends React.Component {
   render() {
     return (
       <div className="post-it-controls">
-        <AddPostItButton onClick={this.props.addPostIt} />
+        <HelpButton onClick={this.props.addPostIt} />
+        <button onClick={this.props.addPostIt}>Add</button>
         <Trashcan
           onDrop={this.handleDrop}
           isHoveringTrashcan={this.state.isHoveringTrashcan}
@@ -125,7 +135,7 @@ class PostItControls extends React.Component {
           onDragOver={this.handleDragOver}
           onDragLeave={this.handleDragLeave}
         />
-        <RemoveAllPostItsButton onClick={this.props.removeAllPostIts} show={Constants.ENABLE_DEBUG} />
+        {Constants.ENABLE_DEBUG && <button onClick={this.props.removeAllPostIts}>Remove all</button>}
       </div>
     );
   }

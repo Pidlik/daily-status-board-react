@@ -69,9 +69,9 @@ class PostItHandler extends React.Component {
     Cookies.set(Constants.COOKIES_NAME_POST_IT, this.state.postIts);
   }
 
-  addPostIt() {
+  addPostIt(event, isHelpPostIt = false) {
     let postIt = {
-      text: '',
+      text: isHelpPostIt ? Constants.HELP_TEXT : '',
       key: DatesHelper.getIsoDateAndTime()
     };
 
