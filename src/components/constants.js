@@ -22,4 +22,4 @@ export const HELP_TEXT = `To increase/decrease plus:\n'${String.fromCharCode(CHA
                          // `To see all time stats:\n${} or left click on on chart`;
 
 // trace.js
-export const ENABLE_DEBUG = true;
+export const ENABLE_DEBUG = false;

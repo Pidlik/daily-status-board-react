@@ -49,10 +49,10 @@ class PostItHandler extends React.Component {
       TRACE_DEBUG('Initiating post it handler with previously saved data');
       this.setState({ postIts: cookiesData });
     }
-    else {
-      TRACE_DEBUG('Initiating post it handler with random test data');
-      this.setState({ postIts: getRandomTestData(5) });
-    }
+    // else {
+    //   TRACE_DEBUG('Initiating post it handler with random test data');
+    //   this.setState({ postIts: getRandomTestData(5) });
+    // }
 
     // Call componentCleanup before the page reloads on refresh
     window.addEventListener('beforeunload', this.componentCleanup);

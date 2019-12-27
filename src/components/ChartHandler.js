@@ -32,6 +32,8 @@ function getDefaultCommentOfTheDay(nrPlus, nrMinus){
   if(nrPlus > nrMinus) {
     if(nrMinus === 0) {
       commentOfTheDay = "This day was quite pleasant";
+    } else if(nrPlus === nrMinus + 1) {
+      commentOfTheDay = "Well that was close...";
     } else {
       commentOfTheDay = "Today, was a good day";
     }
@@ -102,10 +104,10 @@ class ChartHandler extends React.Component {
       TRACE_DEBUG('Initiating chart with previously saved data');
       this.setState({ dataArray: cookiesData });
     }
-    else {
-      TRACE_DEBUG('Initiating chart with random test data');
-      this.setState({ dataArray: getRandomTestData(8) });
-    }    
+    // else {
+    //   TRACE_DEBUG('Initiating chart with random test data');
+    //   this.setState({ dataArray: getRandomTestData(8) });
+    // }
 
     // window.setInterval(() => {
     //   this.setState({
