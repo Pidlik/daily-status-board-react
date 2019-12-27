@@ -2,7 +2,7 @@ DailyStatusBoard is a tool to help in agile project development using scrum. The
 
 This can help in finding problems/disturbances in a developers everyday workday, stuff like . But the main function of a tool like this is to lift everyday good things. It's too easy to focus on only the bad stuff, a bug here and there, management sucks etc. By motivating why yesterday was a good day, fun and good things come into the light and the week gets a little brighter.
 
-[Use tool with GitHub pages](https://pidlik.github.io/daily-status-board-react/)
+[Use tool with GitHub pages](https://pidlik.github.io/daily-status-board/)
 
 ______________________________________________________________
 

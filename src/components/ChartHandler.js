@@ -59,8 +59,9 @@ class ChartHandler extends React.Component {
   }
 
   updateChart(nrPlus, nrMinus) {
-    let data = this.state.dataArray;
+    let dataArrayCopy = Object.assign([], this.state.dataArray);
     let todaysDate = DatesHelper.getIsoDate();
+
     // TODO: Add yesterdays weekdayName? Cause we're reporting for yesterday?
     let newData = {
       label: DatesHelper.getWeekdayName(),
@@ -69,32 +70,34 @@ class ChartHandler extends React.Component {
       date: todaysDate,
       comment: prompt("Comment of the day", getDefaultCommentOfTheDay(nrPlus, nrMinus))};
 
-    // Overwrite last data input if submitting new data on the same day
-    if(data[data.length - 1].date === todaysDate) {
-      TRACE_DEBUG('Overwriting last datapoint');
+    if(dataArrayCopy.length > 0) {
+      // Overwrite last data input if submitting new data on the same day
+      if(dataArrayCopy[dataArrayCopy.length - 1].date === todaysDate) {
+        TRACE_DEBUG('Overwriting last datapoint');
 
-      data[data.length - 1] = newData;
-      this.setState({
-        dataArray: data
-      });
+        dataArrayCopy[dataArrayCopy.length - 1] = newData;
+        this.setState({
+          dataArray: dataArrayCopy
+        });
 
-      return;
-    }
+        return;
+      }
 
-    // Remove first value in array
-    if (data.length >= Constants.MAX_DATA_LENGTH) {
-      TRACE_DEBUG('At max data length (' + Constants.MAX_DATA_LENGTH + '), removing first datapoint');
+      // Remove first value in array
+      if (dataArrayCopy.length >= Constants.MAX_DATA_LENGTH) {
+        TRACE_DEBUG('At max data length (' + Constants.MAX_DATA_LENGTH + '), removing first datapoint');
 
-      data.shift();
-      this.setState({
-        dataArray: [...data, newData]
-      });
+        dataArrayCopy.shift();
+        this.setState({
+          dataArray: [...dataArrayCopy, newData]
+        });
 
-      return;
+        return;
+      }
     }
 
     this.setState({
-      dataArray: [...data, newData]
+      dataArray: [...dataArrayCopy, newData]
     });
   }
 

@@ -1,6 +1,6 @@
 {
-  "homepage": "http://pidlik.github.io/daily-status-board-react",
-  "name": "daily-status-board-react",
+  "homepage": "http://pidlik.github.io/daily-status-board",
+  "name": "daily-status-board",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
