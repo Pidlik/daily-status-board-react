@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/daily-status-board/static/css/main.89a515c1.chunk.css",
+    "main.css": "/daily-status-board/static/css/main.493d58b1.chunk.css",
     "main.js": "/daily-status-board/static/js/main.ecbc0bcd.chunk.js",
     "main.js.map": "/daily-status-board/static/js/main.ecbc0bcd.chunk.js.map",
     "runtime-main.js": "/daily-status-board/static/js/runtime-main.d52f9094.js",
@@ -8,16 +8,16 @@
     "static/js/2.cca3a5e7.chunk.js": "/daily-status-board/static/js/2.cca3a5e7.chunk.js",
     "static/js/2.cca3a5e7.chunk.js.map": "/daily-status-board/static/js/2.cca3a5e7.chunk.js.map",
     "index.html": "/daily-status-board/index.html",
-    "precache-manifest.e60b5fd0dee0274260662ab3da19fa58.js": "/daily-status-board/precache-manifest.e60b5fd0dee0274260662ab3da19fa58.js",
+    "precache-manifest.839f66ceefeb41c1e1a0bf970e2b20bd.js": "/daily-status-board/precache-manifest.839f66ceefeb41c1e1a0bf970e2b20bd.js",
     "service-worker.js": "/daily-status-board/service-worker.js",
-    "static/css/main.89a515c1.chunk.css.map": "/daily-status-board/static/css/main.89a515c1.chunk.css.map",
+    "static/css/main.493d58b1.chunk.css.map": "/daily-status-board/static/css/main.493d58b1.chunk.css.map",
     "static/js/2.cca3a5e7.chunk.js.LICENSE": "/daily-status-board/static/js/2.cca3a5e7.chunk.js.LICENSE",
     "static/media/trashcan_explosion.gif": "/daily-status-board/static/media/trashcan_explosion.181f9121.gif"
   },
   "entrypoints": [
     "static/js/runtime-main.d52f9094.js",
     "static/js/2.cca3a5e7.chunk.js",
-    "static/css/main.89a515c1.chunk.css",
+    "static/css/main.493d58b1.chunk.css",
     "static/js/main.ecbc0bcd.chunk.js"
   ]
 }
