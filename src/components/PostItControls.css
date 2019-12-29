@@ -11,13 +11,10 @@
   width: 20%;
   height: 55%;
 
+  position: relative;
+
   display: flex;
   justify-content: center;
-}
-
-#trashcan-container img {
-  pointer-events: none;
-  z-index: 999;
 }
 
 .trashcan-container-drag-enter {
@@ -27,6 +24,8 @@
 .trashcan-image {
   object-fit: contain;
   max-height: 100%;
+  pointer-events: none;
+  z-index: 998;
 }
 
 .explosion-gif {
@@ -34,6 +33,7 @@
   object-fit: contain;
   max-height: 130%;
   top: -98%;
+  z-index: 999;
 }
 
 .help-button {
