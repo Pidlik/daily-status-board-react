@@ -90,6 +90,10 @@ class ChartInput extends React.Component {
   }
 
   handleKeyDown(event) {
+	// Do not allow editing if in the wrong view
+    if(document.activeElement.tagName.toLowerCase() === "textarea"){
+      return;
+    }
     switch(event.keyCode) {
       case Constants.CHART_KEY_PLUS:
         if(event.shiftKey)
