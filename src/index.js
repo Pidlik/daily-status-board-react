@@ -80,6 +80,11 @@ if (window.matchMedia('(prefers-color-scheme)').media === 'not all') {
 class App extends React.Component {
 
   componentDidMount() {
+    /*
+      https://medium.com/@mwichary/dark-theme-in-a-day-3518dde2955a
+      https://css-tricks.com/dark-modes-with-css/
+      https://dev.to/blacksonic/add-dark-mode-to-your-site-with-this-short-css-trick-1g7b
+    */
     document.getElementById("btn-theme-dark").addEventListener("click", function() {
       document.documentElement.classList.add('color-theme-in-transition')
       document.documentElement.setAttribute('data-theme', "dark")
