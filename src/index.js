@@ -71,5 +71,45 @@ class ControlledNameInput extends React.Component {
 
 */
 
-ReactDOM.render(<ChartHandler />, document.getElementById('chart-handler'));
-ReactDOM.render(<PostItHandler />, document.getElementById('post-it-handler'));
+if (window.matchMedia('(prefers-color-scheme)').media === 'not all') {
+  console.log('Browser doesn\'t support dark mode');
+} else {
+  console.log(window.matchMedia('(prefers-color-scheme)').media);
+}
+
+class App extends React.Component {
+
+  componentDidMount() {
+    document.getElementById("btn-theme-dark").addEventListener("click", function() {
+      document.documentElement.classList.add('color-theme-in-transition')
+      document.documentElement.setAttribute('data-theme', "dark")
+      window.setTimeout(function() {
+        document.documentElement.classList.remove('color-theme-in-transition')
+      }, 1000)
+
+    });
+
+    document.getElementById("btn-theme-light").addEventListener("click", function() {
+      document.documentElement.classList.add('color-theme-in-transition')
+      document.documentElement.setAttribute('data-theme', "light")
+      window.setTimeout(function() {
+        document.documentElement.classList.remove('color-theme-in-transition')
+      }, 1000)
+    });
+  }
+
+  render() {
+    return(
+      <React.Fragment>
+        <div id="chart-handler" class="left-container">
+          <ChartHandler />
+        </div>
+        <div id="post-it-handler" class="right-container">
+          <PostItHandler />
+        </div>
+      </React.Fragment>
+    );
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('app-root'));

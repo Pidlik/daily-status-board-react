@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -28,11 +28,15 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <div>
+      <h2>Theme</h2>
+      <button id="btn-theme-dark">Dark</button>
+      <button id="btn-theme-light">Light</button>
+    </div>
+
     <div id="help-root" class="help-button-container"></div>
-    <div class="main-container">
-      <div id="chart-handler" class="left-container"></div>
-      <div id="post-it-handler" class="right-container"></div>
-    </div>
-    </div>
+
+    <div class="main-container" id="app-root"></div>
   </body>
 </html>

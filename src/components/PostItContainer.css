@@ -60,3 +60,7 @@
     font-family: 'Roboto';
     font-size: 0.8em;
 }
+
+.postit:focus-within {
+    border: 0.1vw solid #c4c0c0;
+}
