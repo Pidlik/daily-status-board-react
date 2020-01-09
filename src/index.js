@@ -37,79 +37,45 @@ https://blog.logrocket.com/how-to-use-react-createref-ea014ad09dba/
 
 */
 
-/*
-For ChartController maybe?
-https://reactpatterns.com/
-
-handleEvent({type}) {
-  switch(type) {
-    case "click":
-    case "mouseenter":
-      return this.setState({ hovered: true })
-    case "mouseleave":
-      return this.setState({ hovered: false })
-    default:
-      return console.warn(`No case for event type "${type}"`)
-  }
-}
-
-class ControlledNameInput extends React.Component {
-  constructor() {
-    super();
-    this.state = { name: "" };
-  }
-
-  render() {
-    return (
-      <input
-        value={this.state.name}
-        onChange={e => this.setState({ name: e.target.value })}
-      />
-    );
-  }
-}
-
-*/
-
-if (window.matchMedia('(prefers-color-scheme)').media === 'not all') {
-  console.log('Browser doesn\'t support dark mode');
-} else {
-  console.log(window.matchMedia('(prefers-color-scheme)').media);
-}
-
 class App extends React.Component {
 
   componentDidMount() {
     /*
-      https://medium.com/@mwichary/dark-theme-in-a-day-3518dde2955a
-      https://css-tricks.com/dark-modes-with-css/
-      https://dev.to/blacksonic/add-dark-mode-to-your-site-with-this-short-css-trick-1g7b
+      @media (prefers-color-scheme: dark) {}
     */
-    document.getElementById("btn-theme-dark").addEventListener("click", function() {
-      document.documentElement.classList.add('color-theme-in-transition')
-      document.documentElement.setAttribute('data-theme', "dark")
-      window.setTimeout(function() {
-        document.documentElement.classList.remove('color-theme-in-transition')
-      }, 1000)
+    // let preferedColorScheme = window.matchMedia('(prefers-color-scheme)');
+    // if (preferedColorScheme === 'not all') {
+    //   console.log('Browser doesn\'t support dark mode');
+    // } else {
+    //   console.log(preferedColorScheme);
+    // }
 
-    });
+    // document.getElementById("btn-theme-dark").addEventListener("click", function() {
+    //     document.documentElement.classList.add('color-theme-in-transition')
+    //     document.documentElement.setAttribute('data-theme', "dark")
+    //     window.setTimeout(function() {
+    //       document.documentElement.classList.remove('color-theme-in-transition')
+    //     }, 1000)
+    // });
 
-    document.getElementById("btn-theme-light").addEventListener("click", function() {
-      document.documentElement.classList.add('color-theme-in-transition')
-      document.documentElement.setAttribute('data-theme', "light")
-      window.setTimeout(function() {
-        document.documentElement.classList.remove('color-theme-in-transition')
-      }, 1000)
-    });
+    // document.getElementById("btn-theme-light").addEventListener("click", function() {
+    //     document.documentElement.classList.add('color-theme-in-transition')
+    //     document.documentElement.setAttribute('data-theme', "light")
+    //     window.setTimeout(function() {
+    //       document.documentElement.classList.remove('color-theme-in-transition')
+    //     }, 1000)
+    // });
+
+    // TODO: Set/fetch cookies
   }
 
   render() {
     return(
       <React.Fragment>
-        <div id="chart-handler" class="left-container">
+        <div id="chart-handler" className="left-container">
           <ChartHandler />
         </div>
-        <div id="post-it-handler" class="right-container">
+        <div id="post-it-handler" className="right-container">
           <PostItHandler />
         </div>
       </React.Fragment>
