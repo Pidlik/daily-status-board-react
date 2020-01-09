@@ -1,4 +1,91 @@
 .chart-container{
   width: 100%;
-  height: 85%;
+  height: 80%;
+}
+
+.chart-controls{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+.input-container{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5%;
+}
+
+.plus-minus-container{
+  display: flex;
+  flex-flow: row;
+  flex-wrap: no-wrap;
+  height: 100%;
+  max-width: 12%;
+  margin: 0 1%;
+}
+
+/* TODO: Fit 2 digit numbers when smaller screen */
+.plus-minus-input{
+  width: 55%;
+  height: 100%;
+}
+
+.plus-minus-button{
+  width: 45%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.plusButton{
+  background: rgb(34, 175, 34); /* Green */
+}
+
+.plusButton:hover{
+  background: rgb(34, 130, 34);
+}
+
+.minusButton{
+  background: rgb(220, 20, 60); /* Red */
+}
+
+.minusButton:hover {
+  background: rgb(175, 20, 60);
+}
+
+/* Remove the up/down arrows from the number inputs */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input {
+  text-align: center;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+  border: 0.1px solid .555555;
+}
+
+
+/* Screen width 720px and onward */
+@media screen and (min-width: 720px) {
+  .chart-container {
+    height: 85%;
+  }
+
+  .chart-controls {
+    height: 15%;
+  }
+
+  .input-container {
+    width: 100%;
+    height: 50%;
+  }
 }

@@ -72,10 +72,10 @@ class App extends React.Component {
   render() {
     return(
       <React.Fragment>
-        <div id="chart-handler" className="left-container">
+        <div id="chart-handler" className="left-container flex-column">
           <ChartHandler />
         </div>
-        <div id="post-it-handler" className="right-container">
+        <div id="post-it-handler" className="right-container flex-column">
           <PostItHandler />
         </div>
       </React.Fragment>

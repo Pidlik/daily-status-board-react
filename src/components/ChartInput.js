@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './ChartInput.css'
+import './ChartHandler.css'
 import TRACE_DEBUG from './trace'
 import * as Constants from './constants'
 
