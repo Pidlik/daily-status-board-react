@@ -8,30 +8,6 @@ import explosionGif from '../assets/images/trashcan_explosion.gif'
 
 import * as Constants from './constants'
 
-class HelpButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.el = document.createElement('div');
-  }
-
-  componentDidMount() {
-    document.body.appendChild(this.el);
-  }
-
-  componentWillUnmount() {
-    document.body.removeChild(this.el);
-  }
-
-  render() {
-    return ReactDOM.createPortal(
-      // Element(s) to render, put 'this.props.children' to render all children to HelpButton
-      <button className='help-button' onClick={event => this.props.onClick(event, true)}>Help</button>,
-      // Container to render the elements into
-      document.getElementById('help-root'),
-    );
-  }
-}
-
 function Trashcan(props) {
   return(
     <div
@@ -129,7 +105,6 @@ class PostItControls extends React.Component {
   render() {
     return (
       <div className="post-it-controls">
-        <HelpButton onClick={this.props.addPostIt} />
         <button onClick={this.props.addPostIt}>Add</button>
         <Trashcan
           onDrop={this.handleDrop}
