@@ -19,7 +19,7 @@
     /* Right bottom corner flap */
     /*border-bottom-right-radius: 3vw 0.25vw;*/
     /* Fancy color stuff */
-    background: #ffff88; /* Old browsers */
+    background: var(--post-it-bg-color);
 
     /*
     background: -moz-linear-gradient(-45deg, #ffff88 81%, #ffff88 82%, #ffff88 82%, #ffffc6 100%);
