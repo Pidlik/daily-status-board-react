@@ -41,6 +41,11 @@ html {
   --input-text-color: black;
   --input-border-color: black;
   --input-bg-color: white;
+
+  --post-it-bg-color: hsl(60, 100%, 77%);
+
+  --button-bg-color: hsl(39, 100%, 50%);
+  --button-bg-color-hover: hsl(33, 100%, 50%);
 }
 
 html[data-theme='dark'] {
@@ -58,6 +63,12 @@ html[data-theme='dark'] {
   --input-text-color: hsl(200, 2%, 44%);
   --input-border-color: hsl(208, 21%, 30%);
   --input-bg-color: hsl(208, 21%, 12%);
+
+  --post-it-bg-color: hsl(60, 64%, 62%);
+
+  /* TODO: Change, now same as light*/
+  --button-bg-color: hsl(39, 100%, 50%);
+  --button-bg-color-hover: hsl(33, 100%, 50%);
 }
 
 /* FUCK YOU CHROME STOP STACKING TRANSITIONS */
@@ -149,7 +160,7 @@ body {
 }
 
 button {
-  background: rgb(255, 165, 0); /* Orange */
+  background: var(--button-bg-color);
   border: none;
   color: white;
 
@@ -166,7 +177,7 @@ button {
 }
 
 button:hover{
-  background: rgb(255, 140, 0); /* Dark Orange */
+  background: var(--button-bg-color-hover);
 }
 
 button:focus {
