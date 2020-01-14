@@ -52,7 +52,7 @@ html[data-theme='dark'] {
   --hue: 210; /* Blue */
   --accent-hue: 25; /* Orange */
 
-  --text-color-normal: hsl(var(--hue), 0%, 92%);
+  --text-color-normal: hsl(200, 2%, 84%);
 
   --button-background: hsl(var(--hue), 63%, 43%);
   --button-text-color: white;
@@ -144,8 +144,12 @@ body {
 }
 
 .theme-selection-container button {
-  max-height: 30%;
+  max-height: 35%;
   margin: 0;
+}
+
+.theme-selection-container button:nth-of-type(2) {
+  margin-left: 3px;
 }
 
 .help-text {
@@ -162,7 +166,7 @@ body {
 button {
   background: var(--button-bg-color);
   border: none;
-  color: white;
+  color: var(--button-text-color);
 
   max-width: 50%;
   height: 50%;
