@@ -37,6 +37,10 @@ html {
   --background: hsl(var(--hue), 0%, 100%);
 
   --help-view-border-color: black;
+
+  --input-text-color: black;
+  --input-border-color: black;
+  --input-bg-color: white;
 }
 
 html[data-theme='dark'] {
@@ -50,6 +54,10 @@ html[data-theme='dark'] {
   --background: hsl(var(--hue), 20%, 12%);
 
   --help-view-border-color: white;
+
+  --input-text-color: hsl(200, 2%, 44%);
+  --input-border-color: hsl(208, 21%, 30%);
+  --input-bg-color: hsl(208, 21%, 12%);
 }
 
 /* FUCK YOU CHROME STOP STACKING TRANSITIONS */
