@@ -70,7 +70,10 @@ input {
   text-decoration: none;
   font-size: 2rem;
   font-weight: bold;
-  border: 0.1px solid .555555;
+
+  color: var(--input-text-color);
+  border: 0.1px solid var(--input-border-color);
+  background: var(--input-bg-color);
 }
 
 
