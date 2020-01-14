@@ -90,8 +90,8 @@ class App extends React.Component {
       document.getElementById("help-btn").style.right = "0";
       this.setState({showHelpView: false});
     } else {
-      document.getElementById("help-view").style.width = "15%";
-      document.getElementById("help-btn").style.right = "15%";
+      document.getElementById("help-view").style.width = "18%";
+      document.getElementById("help-btn").style.right = "18%";
       this.setState({showHelpView: true});
     }
   }

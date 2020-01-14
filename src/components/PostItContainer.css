@@ -11,20 +11,25 @@
     height: 11.5vw;
     display: inline-block;
     padding: 1%;
-    border: 0.08vw solid #E8E8E8;
+    /*border: 0.1vw solid #E8E8E8;*/
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.20);
+
     /* This line below makes the top part look like it got glue on it (little darker) */
     /*border-top: 1vw solid #fdfd86;*/
     /* Right bottom corner flap */
-    border-bottom-right-radius: 3vw 0.25vw;
+    /*border-bottom-right-radius: 3vw 0.25vw;*/
     /* Fancy color stuff */
     background: #ffff88; /* Old browsers */
-    background: -moz-linear-gradient(-45deg, #ffff88 81%, #ffff88 82%, #ffff88 82%, #ffffc6 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(81%,#ffff88), color-stop(82%,#ffff88), color-stop(82%,#ffff88), color-stop(100%,#ffffc6)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(-45deg, #ffff88 81%,#ffff88 82%,#ffff88 82%,#ffffc6 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(-45deg, #ffff88 81%,#ffff88 82%,#ffff88 82%,#ffffc6 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(-45deg, #ffff88 81%,#ffff88 82%,#ffff88 82%,#ffffc6 100%); /* IE10+ */
-    background: linear-gradient(135deg, #ffff88 81%,#ffff88 82%,#ffff88 82%,#ffffc6 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', endColorstr='#ffffc6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    /*
+    background: -moz-linear-gradient(-45deg, #ffff88 81%, #ffff88 82%, #ffff88 82%, #ffffc6 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(81%,#ffff88), color-stop(82%,#ffff88), color-stop(82%,#ffff88), color-stop(100%,#ffffc6));
+    background: -webkit-linear-gradient(-45deg, #ffff88 81%,#ffff88 82%,#ffff88 82%,#ffffc6 100%);
+    background: -o-linear-gradient(-45deg, #ffff88 81%,#ffff88 82%,#ffff88 82%,#ffffc6 100%);
+    background: -ms-linear-gradient(-45deg, #ffff88 81%,#ffff88 82%,#ffff88 82%,#ffffc6 100%);
+    background: linear-gradient(135deg, #ffff88 81%,#ffff88 82%,#ffff88 82%,#ffffc6 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', endColorstr='#ffffc6',GradientType=1 );
+    */
 }
 
 .postit:after {
@@ -38,12 +43,13 @@
     background: rgba(0, 0, 0, 0.2);
     /*        h-offset v-offset blur spread color */
     /* The little flap in the bottom right */
-    box-shadow: 0.05vw 0.75vw 0.25vw rgba(0, 0, 0, 0.40); /* 2px 15px 5px rgba(0, 0, 0, 0.40); */
+    /*
+    box-shadow: 0.05vw 0.75vw 0.25vw rgba(0, 0, 0, 0.40);
     -moz-transform: matrix(-1, -0.1, 0, 1, 0, 0);
     -webkit-transform: matrix(-1, -0.1, 0, 1, 0, 0);
     -o-transform: matrix(-1, -0.1, 0, 1, 0, 0);
     -ms-transform: matrix(-1, -0.1, 0, 1, 0, 0);
-    transform: matrix(-1, -0.1, 0, 1, 0, 0);
+    transform: matrix(-1, -0.1, 0, 1, 0, 0);*/
 }
 
 .postit textarea {
