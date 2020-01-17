@@ -24,6 +24,30 @@ https://reactjs.org/docs/thinking-in-react.html
     - AddPostItButton: Props={add post it function}
     - Trashcan: Props={delete post it function}
 
+// Chart Data
+[
+  OneDay: {
+    label: "Monday",
+    nrPlus: 7,
+    nrMinus: 1,
+    date: "2020-01-01",
+    comment: "He funk int"
+  },
+  ...
+]
+
+// Post It Data
+[
+  PostIt: {
+    pos: {
+      top: "100px",
+      left: "50px"
+    },
+    text: "teamaktiviteter...",
+    key: "2020-01-17THH:mm:ss.sssZ"
+  }
+]
+
 Deploy to GitHub Pages:
 https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f
 
